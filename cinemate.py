@@ -1,9 +1,12 @@
 # IMPORT CSV MODULE
 import csv
 
+# FILE PATH FOR IMDB DATASET
+DATASET = "testsheet.tsv"
+
 # GETS DATA FROM IMDB DATASET AND STORES IN LIST
 def get_data():
-    with open("testsheet.tsv", "r") as f:
+    with open(DATASET, "r") as f:
         tsv_f = csv.DictReader(f, delimiter="\t")
         data = []
         for row in tsv_f:
