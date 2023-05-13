@@ -13,9 +13,15 @@ class Movie:
         self.date = date            # RELEASE DATE
         self.runtime = runtime      # MOVIE RUNTIME
         self.genres = genres        # GENRES
-        
+
     def __str__(self):
-        return f'{self.index:<5}{self.title:<50}{self.date:<10}{self.runtime:<10}{self.genres}'
+        
+        # TO PRINT GENRES LIST AS A STRING
+        genre_sep = ', '
+        genre_str = genre_sep.join(self.genres)
+        
+        # PRINT FORMAT FOR MOVIES
+        return f'{self.index:<5}{self.title:<50}{self.date:<10}{self.runtime:<10}{genre_str}'
 
 # GETS DATA FROM IMDB DATASET AND STORES IN LIST
 def get_movies():
@@ -30,7 +36,7 @@ def get_movies():
             title = row["primaryTitle"]
             date = row["startYear"]
             runtime = row["runtimeMinutes"]
-            genres = row["genres"]
+            genres = row["genres"].split(',') # CONVERT GENRE STRING TO LIST OF STRINGS
             movie = Movie(index, title, date, runtime, genres)
             movies.append(movie)
     return movies
