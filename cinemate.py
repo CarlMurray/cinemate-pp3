@@ -33,6 +33,7 @@ def home_menu():
     print('1. Show all movies')
     print('2. Show favourites')
     print('3. Show watched')
+    get_selection()
     
 # REGISTER USERS MENU SELECTION
 def get_selection():
@@ -44,7 +45,18 @@ def get_selection():
 # PROMPT USER ACTION ON MOVIES LIST 
 def select_user_action():
     action = input('\nSelect from the following:\n1 - Add a favourite\n2 - Add to watched\n0 - Exit to menu\n')
+    
+    # IF EXIT CHOSEN
+    if action == str(0):
+        home_menu()
+    
+    # IF FAVOURITE CHOSEN
+    elif action == str(1):
+        pass # TODO
+    
+    # IF WATCHED CHOSEN
+    else:
+        pass # TODO
         
 get_data()
 home_menu()
-get_selection()
