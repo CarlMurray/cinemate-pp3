@@ -36,3 +36,7 @@ def get_selection():
     if str(selection) == '1':
         show_movies()
     # TODO: OTHER SELECTIONS TO BE ADDED
+        
+get_data()
+home_menu()
+get_selection()
