@@ -22,3 +22,10 @@ def show_movies():
     for movie in data:
         index += 1
         print(f'{index:<5}{movie["primaryTitle"]:<50}{movie["startYear"]:<10}{movie["runtimeMinutes"]:<10}{movie["genres"]}')
+
+# HOME MENU FOR USER SELECTION
+def home_menu():
+    print('Please select an option from the menu below:')
+    print('1. Show all movies')
+    print('2. Show favourites')
+    print('3. Show watched')
