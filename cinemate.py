@@ -10,4 +10,15 @@ def get_data():
             data.append(row)
         return data
 
-print(get_data())
+# SHOWS MOVIE LIST
+def show_movies():
+    index = 0 # SETS INITIAL INDEX TO 0
+    data = get_data()
+
+    # PRINT COLUMN HEADERS
+    print(f'{"#":<5}{"Title":<50}{"Release":<10}{"Runtime":<10}{"Genre":<10}')
+
+    # PRINT EACH MOVIE
+    for movie in data:
+        index += 1
+        print(f'{index:<5}{movie["primaryTitle"]:<50}{movie["startYear"]:<10}{movie["runtimeMinutes"]:<10}{movie["genres"]}')
