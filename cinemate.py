@@ -10,6 +10,8 @@ def get_data():
         tsv_f = csv.DictReader(f, delimiter="\t")
         data = []
         for row in tsv_f:
+            if row["genres"] == '\\N':
+                row["genres"] = '-' # OVERRIDE DEFAULT INVALID GENRE STRING
             data.append(row)
         return data
 
@@ -40,8 +42,25 @@ def get_selection():
     selection = input('\nPlease enter a number: ')
     if int(selection) == 1:
         show_movies()
+    elif int(selection) == 2:
+        show_favourites()
     # TODO: OTHER SELECTIONS TO BE ADDED
    
+# SHOW FAV LIST
+def show_favourites():
+    
+    # PRINT ROW HEADERS
+    print(f'{"#":<5}{"Title":<50}{"Release":<10}{"Runtime":<10}{"Genre":<10}')
+    
+    index = 0 # SETS INITIAL INDEX TO 0
+    
+    # PRINT LIST OF FAVOURITES
+    for fav in fav_list:
+        index += 1
+        if fav["genres"] == '\\N':
+            fav["genres"] = '-'
+        print(f'{index:<5}{fav["primaryTitle"]:<50}{fav["startYear"]:<10}{fav["runtimeMinutes"]:<10}{fav["genres"]}')
+
 # PROMPT USER ACTION ON MOVIES LIST 
 def select_user_action():
     action = int(input('\nSelect from the following:\n1 - Add a favourite\n2 - Add to watched\n0 - Exit to menu\n'))
@@ -63,10 +82,10 @@ def add_favourite():
     movies_list = get_data()
     
     # ENTER # OF MOVIE
-    favourite = input('\nType the ID of the movie and press enter to add favourite: ')
+    favourite = int(input('\nType the ID of the movie and press enter to add favourite: ')) - 1
     
     # ADD CHOICE TO FAV LIST
-    fav_list.append(favourite)
+    fav_list.append(movies_list[favourite])
     
     # PROMPT USER FOR Y/N TO CONTINUE
     user_continue = input('\nDo you want to add another favourite? ')
@@ -80,7 +99,7 @@ def add_favourite():
     
     # IF INVALID CHOICE - KEEP ASKING
     else:
-        while user_continue is not 'Y' or 'N':
+        while user_continue != 'Y' or 'N':
             user_continue = input('\nPlease enter a valid choice (Y / N): ')
             if user_continue == 'Y':
                 add_favourite()
