@@ -38,23 +38,23 @@ def home_menu():
 # REGISTER USERS MENU SELECTION
 def get_selection():
     selection = input('Please enter a number: ')
-    if str(selection) == '1':
+    if int(selection) == 1:
         show_movies()
     # TODO: OTHER SELECTIONS TO BE ADDED
    
 # PROMPT USER ACTION ON MOVIES LIST 
 def select_user_action():
-    action = input('\nSelect from the following:\n1 - Add a favourite\n2 - Add to watched\n0 - Exit to menu\n')
+    action = int(input('\nSelect from the following:\n1 - Add a favourite\n2 - Add to watched\n0 - Exit to menu\n'))
     
     # IF EXIT CHOSEN
-    if action == str(0):
+    if action == 0:
         home_menu()
     
     # IF FAVOURITE CHOSEN
-    elif action == str(1):
+    elif action == 1:
         pass # TODO
     
-    # IF WATCHED CHOSEN
+    # IF WATCHED (2) CHOSEN
     else:
         pass # TODO
         
