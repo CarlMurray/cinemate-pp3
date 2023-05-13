@@ -25,6 +25,7 @@ def show_movies():
     for movie in data:
         index += 1
         print(f'{index:<5}{movie["primaryTitle"]:<50}{movie["startYear"]:<10}{movie["runtimeMinutes"]:<10}{movie["genres"]}')
+    select_user_action()
 
 # HOME MENU FOR USER SELECTION
 def home_menu():
@@ -39,6 +40,10 @@ def get_selection():
     if str(selection) == '1':
         show_movies()
     # TODO: OTHER SELECTIONS TO BE ADDED
+   
+# PROMPT USER ACTION ON MOVIES LIST 
+def select_user_action():
+    action = input('\nSelect from the following:\n1 - Add a favourite\n2 - Add to watched\n0 - Exit to menu\n')
         
 get_data()
 home_menu()
