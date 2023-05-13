@@ -60,7 +60,31 @@ def show_favourites():
         if fav["genres"] == '\\N':
             fav["genres"] = '-'
         print(f'{index:<5}{fav["primaryTitle"]:<50}{fav["startYear"]:<10}{fav["runtimeMinutes"]:<10}{fav["genres"]}')
+    
+    # SHOW OPTIONS MENU
+    print('\nPlease select an option from the menu below:')
+    print('1 - Remove favourite')
+    print('0 - Exit to main menu')
+    selection = int(input('\nPlease enter a number: '))
+    if selection == 1:
+        remove_favourite()
+    elif selection == 0:
+        home_menu()
 
+
+# REMOVE FAVOURITE
+def remove_favourite():
+    selection = int(input('\nType the ID of the movie and press enter to remove favourite: ')) - 1
+    
+    # REMOVE SELECTED MOVIE FROM FAVOURITES
+    removed = fav_list.pop(selection)
+    
+    # SHOW FEEDBACK MSG
+    print(f'\n{removed["primaryTitle"]} removed from favourites\n')
+    
+    # SHOW UPDATED FAVOURITES LIST
+    show_favourites()
+    
 # PROMPT USER ACTION ON MOVIES LIST 
 def select_user_action():
     action = int(input('\nSelect from the following:\n1 - Add a favourite\n2 - Add to watched\n0 - Exit to menu\n'))
