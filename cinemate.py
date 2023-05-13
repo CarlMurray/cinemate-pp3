@@ -29,3 +29,10 @@ def home_menu():
     print('1. Show all movies')
     print('2. Show favourites')
     print('3. Show watched')
+    
+# REGISTER USERS MENU SELECTION
+def get_selection():
+    selection = input('Please enter a number: ')
+    if str(selection) == '1':
+        show_movies()
+    # TODO: OTHER SELECTIONS TO BE ADDED
