@@ -1,9 +1,10 @@
 # IMPORT CSV MODULE
 import csv
+import textwrap
 
 DATASET = "movie_data.tsv" # FILE PATH FOR IMDB DATASET
 fav_list = [] # LIST OF USER FAVOURITES
-list_headers = f'{"#":<8}{"Title":<60}{"Release":<10}{"Runtime":<10}{"Genre":<33}{"Rating":<10}{"Votes":<10}' # LIST HEADER FORMATTING
+list_headers = f'{"#":<8}{"Title":<45}{"Year":<6}{"Mins":<6}{"/10":<6}{"Votes"}' # LIST HEADER FORMATTING
 view_top_100 = False # CHECK WHETHER USER IS VIEWING TOP 100 LIST TO DETERMINE MOVIES LIST
 
 # MOVIE CLASS
@@ -24,7 +25,7 @@ class Movie:
         genre_str = genre_sep.join(self.genres)
         
         # PRINT FORMAT FOR MOVIES
-        return f'{self.index:<8}{self.title:<60}{self.date:<10}{self.runtime:<10}{genre_str:<33}{self.rating:<10}{self.votes:<10}'
+        return f'{self.index:<8}{textwrap.shorten(self.title, width=40, placeholder="..."):<45}{self.date:<6}{self.runtime:<6}{self.rating:<6}{self.votes}'
 
 # GETS DATA FROM IMDB DATASET AND STORES IN LIST
 def get_movies():
