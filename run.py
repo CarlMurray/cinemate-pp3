@@ -64,6 +64,7 @@ def home_menu():
     print('2 - Show favourites')
     print('3 - Show watched')
     print('4 - Show top 100')
+    print('5 - Browse movies')
     get_selection()
     
 # REGISTER USERS MENU SELECTION
@@ -75,6 +76,8 @@ def get_selection():
         show_favourites()
     elif int(selection) == 4:
         show_top_100()
+    elif int(selection) == 5:
+        browse_movies()
     # TODO: OTHER SELECTIONS TO BE ADDED
    
 # SHOW FAV LIST
@@ -198,6 +201,33 @@ def show_top_100():
         movie.index = index
         print(movie)
     select_user_action()
+
+# BROWSE ALL MOVIES
+def browse_movies():
+    action = int(input('\nSelect from the following:\n1 - Search movies\n2 - Browse by genre\n3 - Browse by year\n0 - Exit to menu'))
+    if action == 1:
+        browse_movies_search()
+    elif action == 2:
+        browse_movies_genre()
+    elif action == 3:
+        browse_movies_year()
+    elif action == 0:
+        home_menu()
+        
+# SEARCH MOVIES BY TITLE
+def browse_movies_search():
+    movies = get_movies()
+    query = input("Enter a search query: ")
+    search_results = []
+    index = 0
+    for movie in movies:
+        if query.lower() in movie.title.lower():
+            index += 1
+            movie.index = index
+            search_results.append(movie)
+            print(movie)
+        else:
+            pass   
 
 get_movies()
 create_top_100()
