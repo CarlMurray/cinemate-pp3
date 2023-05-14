@@ -4,6 +4,7 @@ import csv
 DATASET = "movie_data.tsv" # FILE PATH FOR IMDB DATASET
 fav_list = [] # LIST OF USER FAVOURITES
 list_headers = f'{"#":<8}{"Title":<60}{"Release":<10}{"Runtime":<10}{"Genre":<33}{"Rating":<10}{"Votes":<10}' # LIST HEADER FORMATTING
+view_top_100 = False # CHECK WHETHER USER IS VIEWING TOP 100 LIST TO DETERMINE MOVIES LIST
 
 # MOVIE CLASS
 class Movie:
@@ -131,7 +132,13 @@ def select_user_action():
         
 # FOR USER TO ADD A FAVOURITE TO LIST
 def add_favourite():
-    movies = get_movies()
+    
+    # CHECK IF USER IS COMING FROM TOP 100 PAGE TO GET CORRECT MOVIE LIST
+    global view_top_100
+    if view_top_100:
+        movies = create_top_100()
+    else:
+        movies = get_movies()
     
     # ENTER # OF MOVIE
     favourite = int(input('\nType the ID of the movie and press enter to add favourite: ')) - 1
@@ -156,12 +163,13 @@ def add_favourite():
             if user_continue == 'Y':
                 add_favourite()
             elif user_continue == 'N':
+                view_top_100 = False
                 home_menu()
 
     return fav_list
 
-# SHOWS TOP 100 LIST OF MOVIES
-def show_top_100():
+# CREATE TOP 100 MOVIES LIST
+def create_top_100():
     movies = get_movies() # GET ALL MOVIES
     
     # SORT BY NUM VOTES
@@ -172,6 +180,14 @@ def show_top_100():
     
     # SORT MOST VOTED MOVIES BY RATING
     top_100 = sorted(top_100, key= lambda movie: float(movie.rating), reverse=True)
+
+    return top_100
+
+# SHOWS TOP 100 LIST OF MOVIES
+def show_top_100():
+    global view_top_100
+    view_top_100 = True # SET TO TRUE
+    top_100 = create_top_100()
     
     # PRINT LIST OF TOP 100 MOVIES
     index = 0
@@ -183,4 +199,5 @@ def show_top_100():
     select_user_action()
 
 get_movies()
+create_top_100()
 home_menu()
