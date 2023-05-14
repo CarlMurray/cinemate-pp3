@@ -1,9 +1,9 @@
 # IMPORT CSV MODULE
 import csv
 
-DATASET = "testsheet.tsv" # FILE PATH FOR IMDB DATASET
+DATASET = "movie_data.tsv" # FILE PATH FOR IMDB DATASET
 fav_list = [] # LIST OF USER FAVOURITES
-list_headers = f'{"#":<5}{"Title":<50}{"Release":<10}{"Runtime":<10}{"Genre":<10}' # LIST HEADER FORMATTING
+list_headers = f'{"#":<8}{"Title":<50}{"Release":<10}{"Runtime":<10}{"Genre":<10}' # LIST HEADER FORMATTING
 
 # MOVIE CLASS
 class Movie:
@@ -21,7 +21,7 @@ class Movie:
         genre_str = genre_sep.join(self.genres)
         
         # PRINT FORMAT FOR MOVIES
-        return f'{self.index:<5}{self.title:<50}{self.date:<10}{self.runtime:<10}{genre_str}'
+        return f'{self.index:<8}{self.title:<50}{self.date:<10}{self.runtime:<10}{genre_str}'
 
 # GETS DATA FROM IMDB DATASET AND STORES IN LIST
 def get_movies():
@@ -31,8 +31,6 @@ def get_movies():
         index = 0
         for row in tsv_f:
             index += 1
-            if row["genres"] == '\\N':
-                row["genres"] = '-' # OVERRIDE DEFAULT INVALID GENRE STRING
             title = row["primaryTitle"]
             date = row["startYear"]
             runtime = row["runtimeMinutes"]
