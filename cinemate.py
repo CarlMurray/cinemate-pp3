@@ -3,16 +3,18 @@ import csv
 
 DATASET = "movie_data.tsv" # FILE PATH FOR IMDB DATASET
 fav_list = [] # LIST OF USER FAVOURITES
-list_headers = f'{"#":<8}{"Title":<50}{"Release":<10}{"Runtime":<10}{"Genre":<10}' # LIST HEADER FORMATTING
+list_headers = f'{"#":<8}{"Title":<60}{"Release":<10}{"Runtime":<10}{"Genre":<33}{"Rating":<10}{"Votes":<10}' # LIST HEADER FORMATTING
 
 # MOVIE CLASS
 class Movie:
-    def __init__(self, index, title, date, runtime, genres):
+    def __init__(self, index, title, date, runtime, genres, rating, votes):
         self.index = index          # INDEX TO SHOW IN PRINTED LIST
         self.title = title          # MOVIE TITLE
         self.date = date            # RELEASE DATE
         self.runtime = runtime      # MOVIE RUNTIME
         self.genres = genres        # GENRES
+        self.rating = rating        # RATING
+        self.votes = votes          # NUM VOTES
 
     def __str__(self):
         
@@ -21,7 +23,7 @@ class Movie:
         genre_str = genre_sep.join(self.genres)
         
         # PRINT FORMAT FOR MOVIES
-        return f'{self.index:<8}{self.title:<50}{self.date:<10}{self.runtime:<10}{genre_str}'
+        return f'{self.index:<8}{self.title:<60}{self.date:<10}{self.runtime:<10}{genre_str:<33}{self.rating:<10}{self.votes:<10}'
 
 # GETS DATA FROM IMDB DATASET AND STORES IN LIST
 def get_movies():
@@ -35,7 +37,9 @@ def get_movies():
             date = row["startYear"]
             runtime = row["runtimeMinutes"]
             genres = row["genres"].split(',') # CONVERT GENRE STRING TO LIST OF STRINGS
-            movie = Movie(index, title, date, runtime, genres)
+            rating = row['averageRating']
+            votes = row['numVotes']
+            movie = Movie(index, title, date, runtime, genres, rating, votes)
             movies.append(movie)
     return movies
 
@@ -54,9 +58,10 @@ def show_movies():
 # HOME MENU FOR USER SELECTION
 def home_menu():
     print('\nPlease select an option from the menu below:')
-    print('1. Show all movies')
-    print('2. Show favourites')
-    print('3. Show watched')
+    print('1 - Show all movies')
+    print('2 - Show favourites')
+    print('3 - Show watched')
+    print('4 - Show top 100')
     get_selection()
     
 # REGISTER USERS MENU SELECTION
@@ -66,6 +71,8 @@ def get_selection():
         show_movies()
     elif int(selection) == 2:
         show_favourites()
+    elif int(selection) == 4:
+        show_top_100()
     # TODO: OTHER SELECTIONS TO BE ADDED
    
 # SHOW FAV LIST
@@ -152,6 +159,28 @@ def add_favourite():
                 home_menu()
 
     return fav_list
+
+# SHOWS TOP 100 LIST OF MOVIES
+def show_top_100():
+    movies = get_movies() # GET ALL MOVIES
+    
+    # SORT BY NUM VOTES
+    sorted_by_votes = sorted(movies, key=lambda movie: int(movie.votes), reverse=True)
+    
+    # GET ONLY TOP 100 WITH MOST VOTES
+    top_100 = sorted_by_votes[:100]
+    
+    # SORT MOST VOTED MOVIES BY RATING
+    top_100 = sorted(top_100, key= lambda movie: float(movie.rating), reverse=True)
+    
+    # PRINT LIST OF TOP 100 MOVIES
+    index = 0
+    print(list_headers)
+    for movie in top_100:
+        index += 1
+        movie.index = index
+        print(movie)
+    select_user_action()
 
 get_movies()
 home_menu()
