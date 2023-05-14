@@ -229,6 +229,53 @@ def browse_movies_search():
         else:
             pass   
 
+# BROWSE MOVIES BY GENRE
+def browse_movies_genre():
+    movies = get_movies() # GET LIST OF ALL MOVIES
+    genres = get_genres() # GET LIST OF GENRES
+    print('\nSelect from the following: ')
+    i = 0 # GENRE INDEX
+    
+    # PRINT LIST OF GENRES TO CHOOSE
+    for genre in genres:
+        i += 1
+        print(f'{i} - {genre}')
+    
+    # GET USER GENRE CHOICE
+    genre_index = int(input('\nSelect from the following: ')) - 1
+    genre_choice = genres[genre_index]
+    search_results = []
+    index = 0
+    print(list_headers)
+    
+    # ITERATE THROUGH ALL MOVIES
+    for movie in movies:
+        
+        # IF USERS GENRE MATCHES MOVIE, PRINT MOVIE
+        if genre_choice in movie.genres:
+            index += 1
+            movie.index = index
+            search_results.append(movie)
+            print(movie)  
+
+# TO DEFINE LIST OF GENRES    
+def get_genres():
+    movies = get_movies()
+    genres_array = [] # ARRAY TO STORE GENRES
+    
+    # ITERATE THROUGH ALL MOVIES, ADD GENRES TO ARRAY
+    for movie in movies:
+        for genre in movie.genres:
+            
+            # IF GENRE ALREADY IN ARRAY, SKIP
+            if genre in genres_array:
+                continue
+            
+            # ELSE ADD TO GENRES ARAY
+            else: 
+                genres_array.append(genre)
+    return genres_array
+    
 get_movies()
 create_top_100()
 home_menu()
