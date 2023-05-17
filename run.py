@@ -295,10 +295,29 @@ def browse_movies_year():
             print(movie)
         else:
             pass   
-        
-    select_user_action(search_results)
-
     
+    # PROMPT USER FOR Y/N TO CONTINUE
+    user_continue = input('\nDo you want to choose a different year? (Y/N) ')
+    
+    # IF YES - ASK AGAIN
+    if user_continue.lower() == 'y':
+        browse_movies_year()
+        
+    # IF NO - SHOW OPTIONS
+    elif user_continue.lower() == 'n':
+        select_user_action(search_results)
+    
+    # IF INVALID CHOICE - KEEP ASKING
+    else:
+        while user_continue.lower() != 'y' or 'n':
+            user_continue = input('\nPlease enter a valid choice (Y / N): ')
+            # IF YES - ASK AGAIN
+            if user_continue.lower() == 'y':
+                browse_movies_year()
+                
+            # IF NO - SHOW OPTIONS
+            elif user_continue.lower() == 'n':
+                select_user_action(search_results)
     
 get_movies()
 create_top_100()
