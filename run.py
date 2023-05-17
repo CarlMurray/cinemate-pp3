@@ -119,7 +119,7 @@ def remove_favourite():
     show_favourites()
     
 # PROMPT USER ACTION ON MOVIES LIST 
-def select_user_action():
+def select_user_action(genre_results = None):
     action = int(input('\nSelect from the following:\n1 - Add a favourite\n2 - Add to watched\n0 - Exit to menu\n'))
     
     # IF EXIT CHOSEN
@@ -128,19 +128,21 @@ def select_user_action():
     
     # IF FAVOURITE CHOSEN
     elif action == 1:
-        add_favourite()
+        add_favourite(genre_results)
     
     # IF WATCHED (2) CHOSEN
     else:
         pass # TODO
         
 # FOR USER TO ADD A FAVOURITE TO LIST
-def add_favourite():
+def add_favourite(genre_results = None):
     
-    # CHECK IF USER IS COMING FROM TOP 100 PAGE TO GET CORRECT MOVIE LIST
+    # CHECK WHERE USER IS COMING FROM TO GET CORRECT MOVIE LIST
     global view_top_100
     if view_top_100:
         movies = create_top_100()
+    elif genre_results:
+        movies = genre_results
     else:
         movies = get_movies()
     
@@ -228,7 +230,9 @@ def browse_movies_search():
             print(movie)
         else:
             pass   
-
+        
+    select_user_action()
+    
 # BROWSE MOVIES BY GENRE
 def browse_movies_genre():
     movies = get_movies() # GET LIST OF ALL MOVIES
@@ -244,6 +248,11 @@ def browse_movies_genre():
     # GET USER GENRE CHOICE
     genre_index = int(input('\nSelect from the following: ')) - 1
     genre_choice = genres[genre_index]
+    genre_results = create_genre_results(movies, genre_choice)
+    select_user_action(genre_results)
+
+# CREATE GENRE SEARCH RESULTS MOVIE LIST
+def create_genre_results(movies, genre_choice):
     search_results = []
     index = 0
     print(list_headers)
@@ -256,7 +265,8 @@ def browse_movies_genre():
             index += 1
             movie.index = index
             search_results.append(movie)
-            print(movie)  
+            print(movie)
+    return search_results  
 
 # TO DEFINE LIST OF GENRES    
 def get_genres():
