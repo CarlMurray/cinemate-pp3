@@ -1,7 +1,7 @@
 import pandas as pd
 
 # CHOOSE PATH FOR NEW TSV OUTPUT
-OUTPUT_PATH = 'ENTER A FILEPATH/movie_data.tsv' 
+OUTPUT_PATH = '/Users/carl.murray/Documents/cinemate-pp3/movie_data.tsv' 
 
 # OPEN IMDB TSV FILES
 df_basics = pd.read_table('title.basics.tsv', low_memory=False)
@@ -24,8 +24,8 @@ df_basics['runtimeMinutes'] = df_basics['runtimeMinutes'].astype(int)
 
 # FILTER BY DATE AND RUNTIME
 df_basics = df_basics.loc[
-    (df_basics['runtimeMinutes'] > 90) &
-    (df_basics['startYear'] > 2000)
+    (df_basics['runtimeMinutes'] >= 90) &
+    (df_basics['startYear'] >= 2000)
 ]
 
 # MERGE TSVs - ONLY MOVIES WITH RATINGS INCLUDED

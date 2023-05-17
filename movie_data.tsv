@@ -7,6 +7,7 @@ The Lord of the Rings: The Return of the King	2003	201	Action,Adventure,Drama	9.
 The Dark Knight Rises	2012	164	Action,Drama,Thriller	8.4	1737419
 The Lord of the Rings: The Two Towers	2002	179	Action,Adventure,Drama	8.8	1699407
 Django Unchained	2012	165	Drama,Western	8.4	1594647
+Gladiator	2000	155	Action,Adventure,Drama	8.5	1532155
 Batman Begins	2005	140	Action,Crime,Drama	8.2	1499494
 Inglourious Basterds	2009	153	Adventure,Drama,War	8.3	1487419
 The Wolf of Wall Street	2013	180	Biography,Comedy,Crime	8.2	1457477
@@ -16,6 +17,7 @@ Shutter Island	2010	138	Mystery,Thriller	8.2	1355947
 The Departed	2006	151	Crime,Drama,Thriller	8.5	1352687
 Joker	2019	122	Crime,Drama,Thriller	8.4	1347596
 Avatar	2009	162	Action,Adventure,Fantasy	7.9	1339903
+Memento	2000	113	Mystery,Thriller	8.4	1260761
 Guardians of the Galaxy	2014	121	Action,Adventure,Comedy	8.0	1207890
 Avengers: Endgame	2019	181	Action,Adventure,Drama	8.4	1174213
 Pirates of the Caribbean: The Curse of the Black Pearl	2003	143	Action,Adventure,Fantasy	8.1	1150793
@@ -41,9 +43,11 @@ Harry Potter and the Deathly Hallows: Part 2	2011	130	Adventure,Family,Fantasy	8
 Avengers: Age of Ultron	2015	141	Action,Adventure,Sci-Fi	7.3	883100
 The Intouchables	2011	112	Biography,Comedy,Drama	8.5	879236
 The Martian	2015	144	Adventure,Drama,Sci-Fi	8.0	877005
+Snatch	2000	104	Comedy,Crime	8.2	872140
 Iron Man 3	2013	130	Action,Adventure,Sci-Fi	7.1	867471
 Thor	2011	115	Action,Fantasy	7.0	866045
 Captain America: The Winter Soldier	2014	136	Action,Adventure,Sci-Fi	7.8	864295
+Requiem for a Dream	2000	102	Drama	8.3	859774
 Slumdog Millionaire	2008	120	Crime,Drama,Romance	8.0	857666
 The Pianist	2002	150	Biography,Drama,Music	8.5	853379
 Toy Story 3	2010	103	Adventure,Animation,Comedy	8.3	852987
@@ -91,6 +95,7 @@ Skyfall	2012	143	Action,Adventure,Thriller	7.8	708617
 Guardians of the Galaxy Vol. 2	2017	136	Action,Adventure,Comedy	7.6	705815
 X-Men: First Class	2011	131	Action,Sci-Fi	7.7	703750
 Million Dollar Baby	2004	132	Drama,Sport	8.1	698847
+Shrek	2001	90	Adventure,Animation,Comedy	7.9	697863
 Edge of Tomorrow	2014	113	Action,Adventure,Sci-Fi	7.9	697477
 The Batman	2022	176	Action,Crime,Drama	7.8	696297
 District 9	2009	112	Action,Sci-Fi,Thriller	7.9	693808
@@ -115,6 +120,7 @@ Drive	2011	100	Action,Drama	7.8	662252
 Rogue One: A Star Wars Story	2016	133	Action,Adventure,Sci-Fi	7.8	656045
 Harry Potter and the Chamber of Secrets	2002	161	Adventure,Family,Fantasy	7.4	654728
 Harry Potter and the Prisoner of Azkaban	2004	142	Adventure,Family,Fantasy	7.9	653759
+American Psycho	2000	102	Crime,Drama,Horror	7.6	653039
 Transformers	2007	144	Action,Adventure,Sci-Fi	7.0	650193
 Sherlock Holmes	2009	128	Action,Adventure,Mystery	7.6	647167
 Harry Potter and the Goblet of Fire	2005	157	Adventure,Family,Fantasy	7.7	645202
@@ -125,12 +131,15 @@ Frozen	2013	102	Adventure,Animation,Comedy	7.4	638205
 Get Out	2017	104	Horror,Mystery,Thriller	7.7	638186
 Her	2013	126	Drama,Romance,Sci-Fi	8.0	633993
 Into the Wild	2007	148	Adventure,Biography,Drama	8.1	633990
+X-Men	2000	104	Action,Adventure,Sci-Fi	7.3	626403
 Argo	2012	120	Biography,Drama,Thriller	7.7	623876
 The Hateful Eight	2015	168	Crime,Drama,Mystery	7.8	621660
 Prometheus	2012	124	Adventure,Mystery,Sci-Fi	7.0	620722
 1917	2019	119	Action,Drama,War	8.2	617970
+Taken	2008	90	Action,Crime,Thriller	7.8	613646
 La La Land	2016	128	Comedy,Drama,Music	8.0	613245
 Star Trek	2009	127	Action,Adventure,Sci-Fi	7.9	609731
+Cast Away	2000	143	Adventure,Drama,Romance	7.8	607870
 The Matrix Reloaded	2003	138	Action,Sci-Fi	7.2	607473
 Deadpool 2	2018	119	Action,Adventure,Comedy	7.6	602854
 There Will Be Blood	2007	158	Drama	8.2	600853
@@ -165,6 +174,7 @@ The Bourne Identity	2002	119	Action,Mystery,Thriller	7.9	557828
 Don't Look Up	2021	138	Comedy,Drama,Sci-Fi	7.2	556028
 Bohemian Rhapsody	2018	134	Biography,Drama,Music	7.9	554498
 I, Robot	2004	115	Action,Mystery,Sci-Fi	7.1	553569
+A Quiet Place	2018	90	Drama,Horror,Sci-Fi	7.5	547508
 Hacksaw Ridge	2016	139	Biography,Drama,History	8.1	547320
 Troy	2004	163	Drama	7.3	547118
 The Hobbit: The Battle of the Five Armies	2014	144	Adventure,Fantasy	7.4	546530
@@ -239,6 +249,7 @@ The Shape of Water	2017	123	Drama,Fantasy,Romance	7.3	431364
 Room	2015	118	Drama,Thriller	8.1	430758
 The Cabin in the Woods	2011	95	Horror,Mystery,Thriller	7.0	429961
 Tropic Thunder	2008	107	Action,Comedy,War	7.1	428348
+Unbreakable	2000	106	Drama,Mystery,Sci-Fi	7.3	426867
 28 Days Later	2002	113	Drama,Horror,Sci-Fi	7.5	424227
 Brave	2012	93	Adventure,Animation,Comedy	7.1	422670
 Ant-Man and the Wasp	2018	118	Action,Adventure,Comedy	7.0	422641
@@ -311,6 +322,7 @@ True Grit	2010	110	Drama,Western	7.6	346332
 Soul	2020	100	Adventure,Animation,Comedy	8.0	343917
 Mission: Impossible - Fallout	2018	147	Action,Adventure,Thriller	7.7	343743
 The Blind Side	2009	129	Biography,Drama,Sport	7.6	343317
+Meet the Parents	2000	108	Comedy,Romance	7.0	342827
 Up in the Air	2009	109	Comedy,Drama,Romance	7.4	341565
 Shooter	2007	124	Action,Drama,Thriller	7.1	341408
 The Nice Guys	2016	116	Action,Comedy,Crime	7.3	341178
@@ -329,6 +341,7 @@ Marriage Story	2019	137	Drama,Romance	7.9	323450
 The Mist	2007	126	Horror,Sci-Fi,Thriller	7.1	321740
 3:10 to Yuma	2007	122	Action,Crime,Drama	7.7	319634
 Apocalypto	2006	139	Action,Adventure,Drama	7.8	319553
+O Brother, Where Art Thou?	2000	107	Adventure,Comedy,Crime	7.7	319461
 The Man from U.N.C.L.E.	2015	116	Action,Adventure,Comedy	7.2	319029
 Lucky Number Slevin	2006	110	Crime,Drama,Thriller	7.7	318618
 Beauty and the Beast	2017	129	Adventure,Family,Fantasy	7.1	318165
@@ -355,6 +368,7 @@ Insomnia	2002	118	Drama,Mystery,Thriller	7.2	302446
 The Royal Tenenbaums	2001	110	Comedy,Drama	7.6	300401
 Death Proof	2007	127	Action,Thriller	7.0	300077
 Serenity	2005	119	Action,Adventure,Sci-Fi	7.8	299944
+Kung Fu Panda 2	2011	90	Action,Adventure,Animation	7.2	297480
 Kingdom of Heaven	2005	144	Action,Adventure,Drama	7.2	296211
 Creed	2015	133	Action,Drama,Sport	7.6	295719
 Uncut Gems	2019	135	Crime,Drama,Thriller	7.4	295601
@@ -371,8 +385,10 @@ Atonement	2007	123	Drama,Mystery,Romance	7.8	286757
 Elf	2003	97	Adventure,Comedy,Family	7.1	286416
 Finding Dory	2016	97	Adventure,Animation,Comedy	7.3	285853
 Your Name.	2016	106	Animation,Drama,Fantasy	8.4	284741
+Almost Famous	2000	122	Adventure,Comedy,Drama	7.9	283036
 The Jungle Book	2016	106	Adventure,Drama,Family	7.4	282920
 Nobody	2021	92	Action,Crime,Drama	7.4	282213
+The Patriot	2000	165	Action,Drama,History	7.2	282205
 Sully	2016	96	Biography,Drama	7.4	282060
 Dredd	2012	95	Action,Crime,Sci-Fi	7.1	281997
 The Conjuring 2	2016	134	Horror,Mystery,Thriller	7.3	280798
@@ -385,6 +401,7 @@ Stardust	2007	127	Adventure,Family,Fantasy	7.6	277128
 Underworld	2003	121	Action,Fantasy,Thriller	7.0	276532
 The Place Beyond the Pines	2012	140	Crime,Drama,Thriller	7.3	276519
 Road to Perdition	2002	117	Crime,Drama,Thriller	7.7	275432
+Crouching Tiger, Hidden Dragon	2000	120	Action,Adventure,Drama	7.9	275248
 Megamind	2010	95	Action,Animation,Comedy	7.3	274980
 BlacKkKlansman	2018	135	Biography,Comedy,Crime	7.5	273161
 The Lobster	2015	119	Drama,Romance,Sci-Fi	7.1	268662
@@ -408,6 +425,7 @@ Perfume: The Story of a Murderer	2006	147	Crime,Drama,Fantasy	7.5	257317
 Walk the Line	2005	136	Biography,Drama,Music	7.8	256910
 Sunshine	2007	107	Sci-Fi,Thriller	7.2	256529
 End of Watch	2012	109	Action,Adventure,Crime	7.6	256101
+Identity	2003	90	Mystery,Thriller	7.3	255862
 Star Trek Beyond	2016	122	Action,Adventure,Sci-Fi	7.0	251331
 The Reader	2008	124	Drama,Romance	7.6	251292
 The Bucket List	2007	97	Adventure,Comedy,Drama	7.4	251281
@@ -416,10 +434,12 @@ Eastern Promises	2007	100	Crime,Drama,Thriller	7.6	250148
 Spy	2015	120	Action,Comedy	7.0	249822
 A Separation	2011	123	Drama	8.3	249063
 Lawless	2012	116	Biography,Crime,Drama	7.2	246710
+Pitch Black	2000	109	Action,Horror,Sci-Fi	7.1	246457
 Southpaw	2015	124	Action,Crime,Drama	7.3	246407
 A Quiet Place Part II	2020	97	Drama,Horror,Sci-Fi	7.2	246119
 The Descendants	2011	115	Comedy,Drama	7.3	245269
 The Road	2009	111	Drama,Thriller	7.2	245167
+Amores Perros	2000	154	Drama,Thriller	8.1	244975
 The Artist	2011	100	Comedy,Drama,Romance	7.9	244612
 A History of Violence	2005	96	Action,Crime,Drama	7.4	244207
 The Lincoln Lawyer	2011	118	Crime,Drama,Mystery	7.3	243991
@@ -462,6 +482,7 @@ Everest	2015	121	Action,Adventure,Biography	7.1	223495
 Match Point	2005	124	Drama,Romance,Thriller	7.6	222149
 Chef	2014	114	Adventure,Comedy,Drama	7.3	222085
 The Croods	2013	98	Action,Adventure,Animation	7.2	222031
+Remember the Titans	2000	113	Biography,Drama,Sport	7.8	221779
 Let the Right One In	2008	114	Drama,Fantasy,Horror	7.9	221210
 Garden State	2004	102	Comedy,Drama,Romance	7.4	219642
 The Girl with the Dragon Tattoo	2009	152	Crime,Drama,Mystery	7.8	219396
@@ -471,6 +492,7 @@ Planet Terror	2007	105	Action,Comedy,Horror	7.1	216396
 A Walk to Remember	2002	101	Drama,Romance	7.3	215408
 P.S. I Love You	2007	126	Comedy,Drama,Romance	7.0	213857
 The Secret in Their Eyes	2009	129	Drama,Mystery,Romance	8.2	213697
+Traffic	2000	147	Crime,Drama,Thriller	7.6	212332
 I Love You, Man	2009	105	Comedy,Romance	7.0	211439
 Fracture	2007	113	Crime,Drama,Thriller	7.2	210886
 Enchanted	2007	107	Adventure,Animation,Comedy	7.1	210019
@@ -483,6 +505,7 @@ Blue Jasmine	2013	98	Comedy,Drama	7.3	207514
 Elvis	2022	159	Biography,Drama,Music	7.3	206962
 Jai Bhim	2021	164	Crime,Drama,Mystery	8.8	206329
 Tinker Tailor Soldier Spy	2011	127	Drama,Mystery,Thriller	7.0	206327
+Erin Brockovich	2000	131	Biography,Drama	7.4	206280
 The Darjeeling Limited	2007	91	Adventure,Comedy,Drama	7.2	206214
 Prey	2022	100	Action,Adventure,Drama	7.1	205862
 The Banshees of Inisherin	2022	114	Comedy,Drama	7.7	204798
@@ -499,6 +522,7 @@ Dangal	2016	161	Action,Biography,Drama	8.3	196763
 Jarhead	2005	125	Biography,Drama,War	7.0	195910
 The Judge	2014	141	Crime,Drama	7.4	195901
 Sideways	2004	127	Comedy,Drama,Romance	7.5	195835
+Chocolat	2000	121	Drama,Romance	7.3	195808
 Memories of Murder	2003	131	Crime,Drama,Mystery	8.1	194806
 First Man	2018	141	Biography,Drama,History	7.3	193396
 Side Effects	2013	106	Crime,Drama,Mystery	7.1	193140
@@ -511,6 +535,7 @@ Ghostbusters: Afterlife	2021	124	Adventure,Comedy,Fantasy	7.1	191454
 The Last King of Scotland	2006	123	Biography,Drama,History	7.6	190385
 The Age of Adaline	2015	112	Drama,Fantasy,Romance	7.2	189527
 Wrath of Man	2021	119	Action,Crime,Thriller	7.1	188955
+Battle Royale	2000	114	Action,Adventure,Drama	7.6	187972
 K-PAX	2001	120	Drama,Mystery,Sci-Fi	7.4	187905
 Melancholia	2011	135	Drama,Sci-Fi	7.1	187756
 Layer Cake	2004	105	Action,Crime,Drama	7.3	187650
@@ -520,6 +545,7 @@ Promising Young Woman	2020	113	Crime,Drama,Mystery	7.5	186691
 The Assassination of Jesse James by the Coward Robert Ford	2007	160	Biography,Crime,Drama	7.5	186649
 The Bank Job	2008	111	Crime,Drama,Thriller	7.2	184942
 Hero	2002	120	Action,Adventure,Drama	7.9	184211
+High Fidelity	2000	113	Comedy,Drama,Music	7.4	184190
 The Trial of the Chicago 7	2020	129	Drama,History,Thriller	7.7	183485
 Incendies	2010	131	Drama,Mystery	8.3	183250
 Mud	2012	130	Drama	7.4	183076
@@ -547,6 +573,7 @@ Michael Clayton	2007	119	Crime,Drama,Mystery	7.2	169461
 Definitely, Maybe	2008	112	Comedy,Drama,Romance	7.1	169266
 Ralph Breaks the Internet	2018	112	Adventure,Animation,Comedy	7.0	169109
 Kung Fu Panda 3	2016	95	Action,Adventure,Animation	7.1	168991
+Palm Springs	2020	90	Comedy,Fantasy,Mystery	7.4	167978
 The Ghost Writer	2010	128	Crime,Drama,Mystery	7.2	167159
 The Father	2020	97	Drama,Mystery	8.2	166975
 Letters from Iwo Jima	2006	141	Action,Adventure,Drama	7.9	166009
@@ -580,6 +607,7 @@ The Spectacular Now	2013	95	Drama,Romance	7.1	157193
 Onward	2020	102	Adventure,Animation,Comedy	7.4	156880
 Blue Is the Warmest Colour	2013	180	Drama,Romance	7.7	156870
 Snowden	2016	134	Biography,Crime,Drama	7.3	156332
+In the Mood for Love	2000	98	Drama,Romance	8.1	156223
 The Handmaiden	2016	145	Drama,Romance,Thriller	8.1	156222
 The Post	2017	116	Biography,Drama,History	7.2	155981
 Bad Times at the El Royale	2018	141	Crime,Drama,Mystery	7.1	155699
@@ -636,6 +664,7 @@ Still Alice	2014	101	Drama	7.5	139092
 The Big Sick	2017	120	Comedy,Drama,Romance	7.5	139046
 The Book Thief	2013	131	Drama,War	7.5	138644
 John Q	2002	116	Crime,Drama,Thriller	7.1	138427
+Billy Elliot	2000	110	Drama,Music	7.7	138225
 Clerks II	2006	97	Comedy	7.3	138162
 The King	2019	140	Biography,Drama,History	7.3	137905
 Phantom Thread	2017	130	Drama,Romance	7.4	137716
@@ -667,6 +696,7 @@ Fahrenheit 9/11	2004	122	Documentary,Drama,War	7.5	130756
 Triangle of Sadness	2022	147	Comedy,Drama	7.3	130708
 About Schmidt	2002	125	Drama	7.2	130499
 Good Time	2017	102	Crime,Drama,Thriller	7.3	130227
+Black Mirror: Bandersnatch	2018	90	Drama,Fantasy,Mystery	7.1	130012
 Baahubali: The Beginning	2015	159	Action,Drama	8.0	129614
 I Origins	2014	106	Drama,Mystery,Romance	7.3	128748
 The Kingdom	2007	110	Action,Drama,Thriller	7.0	128294
@@ -696,6 +726,8 @@ Gifted	2017	101	Drama	7.6	122248
 King Richard	2021	144	Biography,Drama,Sport	7.5	121614
 The Unbearable Weight of Massive Talent	2022	107	Action,Comedy,Crime	7.0	121513
 Charlie Wilson's War	2007	102	Biography,Comedy,Drama	7.0	121436
+Pay It Forward	2000	123	Drama	7.2	121207
+Men of Honor	2000	129	Biography,Drama	7.2	120537
 Rang De Basanti	2006	167	Comedy,Crime,Drama	8.1	120367
 Nebraska	2013	115	Drama	7.7	120171
 The Florida Project	2017	111	Drama	7.6	119651
@@ -703,6 +735,7 @@ Soorarai Pottru	2020	153	Action,Drama	8.7	119293
 The Way Back	2010	133	Adventure,Drama,History	7.3	119032
 Love, Simon	2018	110	Comedy,Drama,Romance	7.5	118994
 The Foreigner	2017	113	Action,Thriller	7.0	118185
+Death at a Funeral	2007	90	Comedy	7.3	118149
 The Butler	2013	132	Biography,Drama	7.2	117355
 Den of Thieves	2018	140	Action,Crime,Drama	7.0	117308
 Lagaan: Once Upon a Time in India	2001	224	Drama,Musical,Sport	8.1	116775
@@ -721,12 +754,14 @@ The Boat That Rocked	2009	135	Comedy,Drama,Music	7.3	113641
 Little Children	2006	137	Drama,Romance	7.5	113525
 The Unforgivable	2021	112	Crime,Drama	7.1	113292
 Precious	2009	110	Drama	7.3	113254
+Dancer in the Dark	2000	140	Crime,Drama,Musical	7.9	112824
 Across the Universe	2007	133	Drama,Fantasy,History	7.3	112183
 Filth	2013	97	Action,Comedy,Crime	7.0	112124
 Fences	2016	139	Drama	7.2	111944
 The Man Who Wasn't There	2001	116	Crime,Drama	7.5	111882
 The Wave	2008	107	Drama,Thriller	7.6	111681
 Instant Family	2018	118	Comedy,Drama	7.3	111630
+Frequency	2000	118	Crime,Drama,Mystery	7.4	111462
 tick, tick... BOOM!	2021	120	Biography,Comedy,Drama	7.5	111385
 Super Size Me	2004	100	Documentary	7.2	110892
 My Name Is Khan	2010	165	Adventure,Drama,Romance	7.9	110651
@@ -744,6 +779,7 @@ Bone Tomahawk	2015	132	Drama,Horror,Western	7.1	107101
 Before the Devil Knows You're Dead	2007	117	Crime,Drama,Thriller	7.3	107016
 The Death of Stalin	2017	107	Comedy,Drama,History	7.2	106765
 Elite Squad	2007	115	Action,Crime,Drama	8.0	106570
+Malena	2000	108	Drama,Romance,War	7.4	106522
 Baahubali 2: The Conclusion	2017	167	Action,Drama	8.2	106336
 St. Vincent	2014	102	Comedy,Drama	7.2	105716
 ParaNorman	2012	92	Adventure,Animation,Comedy	7.0	105650
@@ -795,6 +831,7 @@ Holes	2003	117	Adventure,Comedy,Drama	7.0	93721
 Swades	2004	210	Drama,Musical	8.2	93476
 Beginners	2010	105	Comedy,Drama,Romance	7.2	93427
 Dark Waters	2019	126	Biography,Drama,History	7.6	93348
+Flipped	2010	90	Comedy,Drama,Romance	7.7	93314
 Selma	2014	128	Biography,Drama,History	7.5	93136
 Submarine	2010	97	Comedy,Drama,Romance	7.3	92980
 August: Osage County	2013	121	Comedy,Drama	7.2	92748
@@ -826,7 +863,9 @@ Eye in the Sky	2015	102	Action,Drama,Thriller	7.3	88391
 Drishyam	2015	163	Crime,Drama,Mystery	8.2	88240
 My Father and My Son	2005	112	Drama,Family	8.2	88064
 West Side Story	2021	156	Crime,Drama,Musical	7.2	88055
+Finding Forrester	2000	136	Drama	7.3	87673
 Dope	2015	103	Adventure,Comedy,Crime	7.2	87429
+Paprika	2006	90	Animation,Drama,Fantasy	7.7	87353
 Frailty	2001	100	Crime,Drama,Thriller	7.2	86855
 The Fabelmans	2022	151	Drama	7.6	86743
 Minari	2020	115	Drama	7.4	86679
@@ -889,6 +928,7 @@ The Water Diviner	2014	111	Drama,History,War	7.0	76640
 Ong-Bak: The Thai Warrior	2003	108	Action,Crime,Thriller	7.1	76298
 Sicko	2007	123	Documentary,Drama	8.0	76095
 The Infiltrator	2016	127	Biography,Crime,Drama	7.0	75986
+Blue Ruin	2013	90	Crime,Drama,Thriller	7.1	75849
 The Fundamentals of Caring	2016	97	Comedy,Drama	7.3	75742
 Whatever Works	2009	93	Comedy,Romance	7.1	75377
 The White Ribbon	2009	144	Drama,Mystery,Thriller	7.8	75346
@@ -902,6 +942,7 @@ The Book of Life	2014	95	Adventure,Animation,Comedy	7.2	74028
 In the Valley of Elah	2007	121	Crime,Drama,Mystery	7.2	73959
 Dil Chahta Hai	2001	183	Comedy,Drama,Romance	8.1	73701
 Paris, je t'aime	2006	120	Comedy,Drama,Romance	7.2	73491
+Anomalisa	2015	90	Animation,Comedy,Drama	7.2	73454
 Five Feet Apart	2019	116	Drama,Romance	7.2	73237
 The Wailing	2016	156	Drama,Horror,Mystery	7.4	73203
 Invincible	2006	105	Biography,Drama,Sport	7.0	73027
@@ -927,6 +968,7 @@ House of Sand and Fog	2003	126	Crime,Drama	7.5	70289
 The Science of Sleep	2006	105	Comedy,Drama,Fantasy	7.2	70052
 Bhaag Milkha Bhaag	2013	186	Biography,Drama,Sport	8.2	69683
 Burning	2018	148	Drama,Mystery,Thriller	7.5	69466
+Hera Pheri	2000	156	Action,Comedy,Crime	8.1	69268
 Celda 211	2009	113	Action,Adventure,Crime	7.6	69070
 The Chaser	2008	125	Action,Crime,Drama	7.8	68999
 The Body	2012	112	Crime,Drama,Mystery	7.6	68871
@@ -952,50 +994,8 @@ The Courier	2020	112	Drama,History,Thriller	7.2	66269
 Timecrimes	2007	92	Horror,Mystery,Sci-Fi	7.1	65924
 Batman v Superman: Dawn of Justice (Ultimate Edition)	2016	182	Action,Adventure,Sci-Fi	7.2	65802
 Waking Life	2001	99	Animation,Drama,Fantasy	7.7	65490
+Wonder Boys	2000	107	Comedy,Drama	7.2	65352
 Coffee and Cigarettes	2003	95	Comedy,Drama,Music	7.0	65311
 Friday Night Lights	2004	118	Action,Drama,Sport	7.2	64953
 A Tale of Two Sisters	2003	114	Drama,Horror,Mystery	7.1	64809
 The Chorus	2004	97	Comedy,Drama,Music	7.8	64465
-G.O.R.A.	2004	127	Adventure,Comedy,Sci-Fi	8.0	64460
-Enough Said	2013	93	Comedy,Drama,Romance	7.0	64404
-Ghajini	2008	186	Action,Drama,Mystery	7.3	64073
-The Little Prince	2015	108	Adventure,Animation,Drama	7.7	64070
-Kahaani	2012	122	Mystery,Thriller	8.1	63949
-The Young Victoria	2009	105	Biography,Drama,History	7.2	63777
-Fish Tank	2009	123	Drama	7.3	63706
-Demon Slayer the Movie: Mugen Train	2020	117	Action,Adventure,Animation	8.2	63676
-Vikram	2022	175	Action,Crime,Thriller	8.3	63528
-Becoming Jane	2007	120	Biography,Drama,Romance	7.0	63317
-We Are Marshall	2006	131	Drama,Sport	7.0	63096
-Karthikeya 2	2022	150	Action,Adventure,Fantasy	8.0	63061
-Arthur Christmas	2011	97	Adventure,Animation,Comedy	7.1	63043
-The Dressmaker	2015	119	Comedy,Drama,Western	7.0	62909
-The Devil's Double	2011	109	Biography,Drama,Thriller	7.1	62898
-A Man Called Ove	2015	116	Comedy,Drama,Romance	7.7	62846
-Dolemite Is My Name	2019	118	Biography,Comedy,Drama	7.2	62725
-Everybody's Fine	2009	100	Adventure,Drama	7.1	62695
-M.S. Dhoni: The Untold Story	2016	184	Biography,Drama,Sport	7.9	62646
-The White Tiger	2021	125	Crime,Drama	7.1	62602
-The Salesman	2016	124	Drama,Thriller	7.7	62302
-Leave No Trace	2018	109	Adventure,Drama	7.1	62058
-I, Daniel Blake	2016	100	Drama	7.8	61919
-Force Majeure	2014	120	Comedy,Drama	7.2	61778
-Calvary	2014	102	Crime,Drama,Mystery	7.4	61756
-Perfect Sense	2011	92	Drama,Romance,Sci-Fi	7.0	61753
-4 Months, 3 Weeks and 2 Days	2007	113	Drama	7.9	61710
-Bad Education	2004	106	Crime,Drama	7.4	61666
-Aftersun	2022	102	Drama	7.7	60830
-Woman in Gold	2015	109	Biography,Drama,History	7.3	60715
-The Great Debaters	2007	126	Biography,Drama,Romance	7.5	60622
-OMG: Oh My God!	2012	125	Comedy,Drama,Fantasy	8.1	60588
-Breach	2007	110	Biography,Crime,Drama	7.0	60545
-Victoria	2015	138	Crime,Drama,Romance	7.6	60506
-Pain and Glory	2019	113	Drama	7.5	60450
-Song of the Sea	2014	93	Adventure,Animation,Drama	8.0	60434
-Loving Vincent	2017	94	Animation,Drama,Mystery	7.8	60223
-Thirteen Lives	2022	147	Action,Adventure,Biography	7.8	60128
-Who Am I	2014	102	Crime,Drama,Mystery	7.5	59724
-In the Loop	2009	106	Comedy	7.4	59691
-Religulous	2008	101	Comedy,Documentary,War	7.6	59670
-The Lookout	2007	99	Crime,Drama,Thriller	7.0	59627
-Mirage	2018	128	Drama,Fantasy,Mystery	7.4	59554
