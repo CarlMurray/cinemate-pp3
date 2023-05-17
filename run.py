@@ -235,28 +235,22 @@ def browse_movies_search():
     if len(search_results) == 0:
         print('No matches found')   
 
-    # PROMPT USER FOR Y/N TO CONTINUE
-    user_continue = input('\nDo you want to enter another search query? (Y/N) ')
-    
-    # IF YES - ASK AGAIN
-    if user_continue.lower() == 'y':
-        browse_movies_search()
+    user_continue = None
+    while user_continue not in ['y', 'n', 'Y', 'N']:
+        # PROMPT USER FOR Y/N TO CONTINUE
+        user_continue = input('\nDo you want to enter another search query? (Y/N) ')
         
-    # IF NO - SHOW OPTIONS
-    elif user_continue.lower() == 'n':
-        select_user_action(search_results)
-    
-    # IF INVALID CHOICE - KEEP ASKING
-    else:
-        while user_continue.lower() != 'y' or 'n':
-            user_continue = input('\nPlease enter a valid choice (Y / N): ')
-            # IF YES - ASK AGAIN
-            if user_continue.lower() == 'y':
-                browse_movies_search()
-                
-            # IF NO - SHOW OPTIONS
-            elif user_continue.lower() == 'n':
-                select_user_action(search_results)
+        # IF YES - ASK AGAIN
+        if user_continue.lower() == 'y':
+            browse_movies_search()
+            
+        # IF NO - SHOW OPTIONS
+        elif user_continue.lower() == 'n':
+            select_user_action(search_results)
+        
+        # IF INVALID CHOICE - KEEP ASKING
+        else:
+            print('\nPlease enter a valid choice (Y/N) ')
     
 # BROWSE MOVIES BY GENRE
 def browse_movies_genre():
@@ -270,35 +264,37 @@ def browse_movies_genre():
         i += 1
         print(f'{i} - {genre}')
     
-    # GET USER GENRE CHOICE
-    genre_index = int(input('\nSelect from the following: ')) - 1
-    genre_choice = genres[genre_index]
-    genre_results = create_genre_results(movies, genre_choice)
     
+    genre_index = None
+    while genre_index is None:
+        try:
+            # GET USER GENRE CHOICE
+            genre_index = int(input('\nSelect from the following: ')) - 1
+            genre_choice = genres[genre_index]
+            genre_results = create_genre_results(movies, genre_choice)
+            
+        except (IndexError, ValueError):
+            print('Invalid choice...')
+            genre_index = None
     
-    # PROMPT USER FOR Y/N TO CONTINUE
-    user_continue = input('\nDo you want to choose a different genre? (Y/N) ')
-    
-    # IF YES - ASK AGAIN
-    if user_continue.lower() == 'y':
-        browse_movies_genre()
-        
-    # IF NO - SHOW OPTIONS
-    elif user_continue.lower() == 'n':
-        select_user_action(genre_results)
-    
-    # IF INVALID CHOICE - KEEP ASKING
-    else:
-        while user_continue.lower() != 'y' or 'n':
-            user_continue = input('\nPlease enter a valid choice (Y / N): ')
-            # IF YES - ASK AGAIN
-            if user_continue.lower() == 'y':
-                browse_movies_genre()
-                
-            # IF NO - SHOW OPTIONS
-            elif user_continue.lower() == 'n':
-                select_user_action(genre_results)
+    user_continue = None
+    while user_continue not in ['y', 'n', 'Y', 'N']:
 
+        # PROMPT USER FOR Y/N TO CONTINUE
+        user_continue = input('\nDo you want to choose a different genre? (Y/N) ')
+        
+        # IF YES - ASK AGAIN
+        if user_continue.lower() == 'y':
+            browse_movies_genre()
+            
+        # IF NO - SHOW OPTIONS
+        elif user_continue.lower() == 'n':
+            select_user_action(genre_results)
+        
+        # IF INVALID CHOICE - KEEP ASKING
+        else:
+            print('\nPlease enter a valid choice (Y/N) ')
+        
 # CREATE GENRE SEARCH RESULTS MOVIE LIST
 def create_genre_results(movies, genre_choice):
     search_results = []
@@ -336,9 +332,21 @@ def get_genres():
     
 def browse_movies_year():
     movies = get_movies()
-    query = input('Enter a year from 2000 - 2023: ')
     search_results = []
     index = 0
+    query = None
+    while query is None:
+        try:
+            query = input('Enter a year from 2000 - 2023: ')
+            if 2000 > int(query) or int(query) > 2023:
+                query = None
+                print('Invalid choice...')
+
+        except (ValueError):
+            print('Invalid choice...')
+            query = None
+
+    
     for movie in movies:
         if query in movie.date :
             index += 1
@@ -349,27 +357,21 @@ def browse_movies_year():
             pass   
     
     # PROMPT USER FOR Y/N TO CONTINUE
-    user_continue = input('\nDo you want to choose a different year? (Y/N) ')
-    
-    # IF YES - ASK AGAIN
-    if user_continue.lower() == 'y':
-        browse_movies_year()
+    user_continue = None
+    while user_continue not in ['y', 'n', 'Y', 'N']:
+        user_continue = input('\nDo you want to choose a different year? (Y/N) ')
+
+        # IF YES - ASK AGAIN
+        if user_continue.lower() == 'y':
+            browse_movies_year()
+            
+        # IF NO - SHOW OPTIONS
+        elif user_continue.lower() == 'n':
+            select_user_action(search_results)
         
-    # IF NO - SHOW OPTIONS
-    elif user_continue.lower() == 'n':
-        select_user_action(search_results)
-    
-    # IF INVALID CHOICE - KEEP ASKING
-    else:
-        while user_continue.lower() != 'y' or 'n':
-            user_continue = input('\nPlease enter a valid choice (Y / N): ')
-            # IF YES - ASK AGAIN
-            if user_continue.lower() == 'y':
-                browse_movies_year()
-                
-            # IF NO - SHOW OPTIONS
-            elif user_continue.lower() == 'n':
-                select_user_action(search_results)
+        # IF INVALID CHOICE - KEEP ASKING
+        else:
+            print('\nPlease enter a valid choice (Y/N)')
     
 get_movies()
 create_top_100()
