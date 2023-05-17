@@ -118,7 +118,7 @@ def remove_favourite():
     show_favourites()
     
 # PROMPT USER ACTION ON MOVIES LIST 
-def select_user_action(genre_results = None, top_100 = None):
+def select_user_action(genre_results = None, top_100 = None, search_results = None):
     action = int(input('\nSelect from the following:\n1 - Add a favourite\n2 - Add to watched\n0 - Exit to menu\n'))
     
     # IF EXIT CHOSEN
@@ -127,20 +127,22 @@ def select_user_action(genre_results = None, top_100 = None):
     
     # IF FAVOURITE CHOSEN
     elif action == 1:
-        add_favourite(genre_results, top_100)
+        add_favourite(genre_results, top_100, search_results)
     
     # IF WATCHED (2) CHOSEN
     else:
         pass # TODO
         
 # FOR USER TO ADD A FAVOURITE TO LIST
-def add_favourite(genre_results = None, top_100 = None):
+def add_favourite(genre_results = None, top_100 = None, search_results = None):
     
     # CHECK WHERE USER IS COMING FROM TO GET CORRECT MOVIE LIST
     if top_100:
         movies = create_top_100()
     elif genre_results:
         movies = genre_results
+    elif search_results:
+        movies = search_results
     else:
         movies = get_movies()
     
@@ -225,8 +227,7 @@ def browse_movies_search():
             print(movie)
         else:
             pass   
-        
-    select_user_action()
+    select_user_action(search_results)
     
 # BROWSE MOVIES BY GENRE
 def browse_movies_genre():
@@ -280,6 +281,24 @@ def get_genres():
             else: 
                 genres_array.append(genre)
     return genres_array
+    
+def browse_movies_year():
+    movies = get_movies()
+    query = input('Enter a year from 2000 - 2023: ')
+    search_results = []
+    index = 0
+    for movie in movies:
+        if query in movie.date :
+            index += 1
+            movie.index = index
+            search_results.append(movie)
+            print(movie)
+        else:
+            pass   
+        
+    select_user_action(search_results)
+
+    
     
 get_movies()
 create_top_100()
