@@ -245,7 +245,30 @@ def browse_movies_genre():
     genre_index = int(input('\nSelect from the following: ')) - 1
     genre_choice = genres[genre_index]
     genre_results = create_genre_results(movies, genre_choice)
-    select_user_action(genre_results)
+    
+    
+    # PROMPT USER FOR Y/N TO CONTINUE
+    user_continue = input('\nDo you want to choose a different genre? (Y/N) ')
+    
+    # IF YES - ASK AGAIN
+    if user_continue.lower() == 'y':
+        browse_movies_genre()
+        
+    # IF NO - SHOW OPTIONS
+    elif user_continue.lower() == 'n':
+        select_user_action(genre_results)
+    
+    # IF INVALID CHOICE - KEEP ASKING
+    else:
+        while user_continue.lower() != 'y' or 'n':
+            user_continue = input('\nPlease enter a valid choice (Y / N): ')
+            # IF YES - ASK AGAIN
+            if user_continue.lower() == 'y':
+                browse_movies_genre()
+                
+            # IF NO - SHOW OPTIONS
+            elif user_continue.lower() == 'n':
+                select_user_action(genre_results)
 
 # CREATE GENRE SEARCH RESULTS MOVIE LIST
 def create_genre_results(movies, genre_choice):
