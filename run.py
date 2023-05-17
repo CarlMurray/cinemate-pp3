@@ -5,7 +5,6 @@ import textwrap
 DATASET = "movie_data.tsv" # FILE PATH FOR IMDB DATASET
 fav_list = [] # LIST OF USER FAVOURITES
 list_headers = f'{"#":<8}{"Title":<45}{"Year":<6}{"Mins":<6}{"/10":<6}{"Votes"}' # LIST HEADER FORMATTING
-view_top_100 = False # CHECK WHETHER USER IS VIEWING TOP 100 LIST TO DETERMINE MOVIES LIST
 
 # MOVIE CLASS
 class Movie:
@@ -119,7 +118,7 @@ def remove_favourite():
     show_favourites()
     
 # PROMPT USER ACTION ON MOVIES LIST 
-def select_user_action(genre_results = None):
+def select_user_action(genre_results = None, top_100 = None):
     action = int(input('\nSelect from the following:\n1 - Add a favourite\n2 - Add to watched\n0 - Exit to menu\n'))
     
     # IF EXIT CHOSEN
@@ -128,18 +127,17 @@ def select_user_action(genre_results = None):
     
     # IF FAVOURITE CHOSEN
     elif action == 1:
-        add_favourite(genre_results)
+        add_favourite(genre_results, top_100)
     
     # IF WATCHED (2) CHOSEN
     else:
         pass # TODO
         
 # FOR USER TO ADD A FAVOURITE TO LIST
-def add_favourite(genre_results = None):
+def add_favourite(genre_results = None, top_100 = None):
     
     # CHECK WHERE USER IS COMING FROM TO GET CORRECT MOVIE LIST
-    global view_top_100
-    if view_top_100:
+    if top_100:
         movies = create_top_100()
     elif genre_results:
         movies = genre_results
@@ -169,7 +167,6 @@ def add_favourite(genre_results = None):
             if user_continue == 'Y':
                 add_favourite()
             elif user_continue == 'N':
-                view_top_100 = False
                 home_menu()
 
     return fav_list
@@ -191,8 +188,6 @@ def create_top_100():
 
 # SHOWS TOP 100 LIST OF MOVIES
 def show_top_100():
-    global view_top_100
-    view_top_100 = True # SET TO TRUE
     top_100 = create_top_100()
     
     # PRINT LIST OF TOP 100 MOVIES
@@ -202,7 +197,7 @@ def show_top_100():
         index += 1
         movie.index = index
         print(movie)
-    select_user_action()
+    select_user_action(top_100)
 
 # BROWSE ALL MOVIES
 def browse_movies():
