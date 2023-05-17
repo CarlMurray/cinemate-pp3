@@ -203,15 +203,20 @@ def show_top_100():
 
 # BROWSE ALL MOVIES
 def browse_movies():
-    action = int(input('\nSelect from the following:\n1 - Search movies\n2 - Browse by genre\n3 - Browse by year\n0 - Exit to menu'))
-    if action == 1:
-        browse_movies_search()
-    elif action == 2:
-        browse_movies_genre()
-    elif action == 3:
-        browse_movies_year()
-    elif action == 0:
-        home_menu()
+    action = None
+    while action not in ['0', '1', '2', '3']:
+        action = input('\nSelect from the following:\n1 - Search movies\n2 - Browse by genre\n3 - Browse by year\n0 - Exit to menu')
+        if action == '1':
+            browse_movies_search()
+        elif action == '2':
+            browse_movies_genre()
+        elif action == '3':
+            browse_movies_year()
+        elif action == '0':
+            home_menu()
+        else:
+            print('Please enter a valid option')
+       
         
 # SEARCH MOVIES BY TITLE
 def browse_movies_search():
