@@ -226,8 +226,32 @@ def browse_movies_search():
             search_results.append(movie)
             print(movie)
         else:
-            pass   
-    select_user_action(search_results)
+            pass
+    if len(search_results) == 0:
+        print('No matches found')   
+
+    # PROMPT USER FOR Y/N TO CONTINUE
+    user_continue = input('\nDo you want to enter another search query? (Y/N) ')
+    
+    # IF YES - ASK AGAIN
+    if user_continue.lower() == 'y':
+        browse_movies_search()
+        
+    # IF NO - SHOW OPTIONS
+    elif user_continue.lower() == 'n':
+        select_user_action(search_results)
+    
+    # IF INVALID CHOICE - KEEP ASKING
+    else:
+        while user_continue.lower() != 'y' or 'n':
+            user_continue = input('\nPlease enter a valid choice (Y / N): ')
+            # IF YES - ASK AGAIN
+            if user_continue.lower() == 'y':
+                browse_movies_search()
+                
+            # IF NO - SHOW OPTIONS
+            elif user_continue.lower() == 'n':
+                select_user_action(search_results)
     
 # BROWSE MOVIES BY GENRE
 def browse_movies_genre():
