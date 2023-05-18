@@ -146,30 +146,47 @@ def add_favourite(genre_results = None, top_100 = None, search_results = None):
     else:
         movies = get_movies()
     
-    # ENTER # OF MOVIE
-    favourite = int(input('\nType the ID of the movie and press enter to add favourite: ')) - 1
-    
-    # ADD CHOICE TO FAV LIST
-    fav_list.append(movies[favourite])
-    
-    # PROMPT USER FOR Y/N TO CONTINUE
-    user_continue = input('\nDo you want to add another favourite? ')
-    # IF YES - ASK AGAIN
-    if user_continue == 'Y':
-        add_favourite()
+    favourite = None
+    while favourite is None:
+        try:
+            # ENTER # OF MOVIE
+            favourite = int(input('\nType the ID of the movie and press enter to add favourite: ')) - 1
+            
+            # CHECK IF MOVIE ALREADY IN FAVOURITES
+            if movies[favourite].title not in [movie.title for movie in fav_list]:
+                # ADD CHOICE TO FAV LIST
+                fav_list.append(movies[favourite])
+                print(f'{movies[favourite].title} added to favourites')
+            
+            else:
+                raise TypeError
         
-    # IF NO - QUIT
-    elif user_continue == 'N':
-        home_menu()
+        # ERROR FOR INVALID CHOICE         
+        except (ValueError, IndexError):
+            print('Please enter a number from the list')
+            favourite = None
+        
+        # ERROR IF ALREADY IN FAVOURITES
+        except TypeError:
+            print(f'{movies[favourite].title} already in favourites')
+    
+    user_continue = None
+    while user_continue not in ['y', 'n', 'Y', 'N']:
+        
+        # PROMPT USER FOR Y/N TO CONTINUE
+        user_continue = input('\nDo you want to add another favourite? ')
+
+        # IF YES - ASK AGAIN
+        if user_continue.lower() == 'y':
+            add_favourite()
+            
+        # IF NO - QUIT
+        elif user_continue.lower() == 'n':
+            home_menu()
     
     # IF INVALID CHOICE - KEEP ASKING
-    else:
-        while user_continue != 'Y' or 'N':
-            user_continue = input('\nPlease enter a valid choice (Y / N): ')
-            if user_continue == 'Y':
-                add_favourite()
-            elif user_continue == 'N':
-                home_menu()
+        else:
+            print('\nPlease enter a valid choice (Y/N) ')
 
     return fav_list
 
