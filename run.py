@@ -178,7 +178,7 @@ def add_favourite(genre_results = None, top_100 = None, search_results = None):
 
         # IF YES - ASK AGAIN
         if user_continue.lower() == 'y':
-            add_favourite()
+            add_favourite(movies)
             
         # IF NO - QUIT
         elif user_continue.lower() == 'n':
