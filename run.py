@@ -106,12 +106,20 @@ def show_favourites():
     print('\nPlease select an option from the menu below:')
     print('1 - Remove favourite')
     print('0 - Exit to main menu')
-    selection = int(input('\nPlease enter a number: '))
-    if selection == 1:
-        remove_favourite()
-    elif selection == 0:
-        home_menu()
-
+    
+    while True:
+        try:
+            selection = int(input('\nPlease enter a number: '))
+        except:
+            print('Invalid choice')
+        else:
+            if selection == 1:
+                remove_favourite()
+            elif selection == 0:
+                home_menu()
+            else:
+                print('Invalid choice')
+                continue
 
 # REMOVE FAVOURITE
 def remove_favourite():
