@@ -68,16 +68,25 @@ def home_menu():
     
 # REGISTER USERS MENU SELECTION
 def get_selection():
-    selection = input('\nPlease enter a number: ')
-    if int(selection) == 1:
-        show_movies()
-    elif int(selection) == 2:
-        show_favourites()
-    elif int(selection) == 4:
-        show_top_100()
-    elif int(selection) == 5:
-        browse_movies()
-    # TODO: OTHER SELECTIONS TO BE ADDED
+    while True:
+        try:
+            selection = int(input('\nPlease enter a number: '))
+        except:
+            print('Invalid choice')
+        else:            
+            if int(selection) == 1:
+                show_movies()
+            elif int(selection) == 2:
+                show_favourites()
+            elif int(selection) == 4:
+                show_top_100()
+            elif int(selection) == 5:
+                browse_movies()
+            # TODO: OTHER SELECTIONS TO BE ADDED
+            else:
+                print('Invalid choice')
+                continue
+                
    
 # SHOW FAV LIST
 def show_favourites():
