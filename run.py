@@ -91,15 +91,15 @@ def get_selection():
         except:
             print(RED + '\nInvalid choice; please choose a valid option' + RESET)
         else:            
-            if int(selection) == 1:
+            if selection == 1:
                 show_movies()
-            elif int(selection) == 2:
+            elif selection == 2:
                 show_custom_list(list=fav_list, list_name_string='favourites')
-            elif int(selection) == 3:
+            elif selection == 3:
                 show_custom_list(list=watch_list, list_name_string='watch list')
-            elif int(selection) == 4:
+            elif selection == 4:
                 show_top_100()
-            elif int(selection) == 5:
+            elif selection == 5:
                 browse_movies()
             # TODO: OTHER SELECTIONS TO BE ADDED
             else:
