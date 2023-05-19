@@ -106,6 +106,10 @@ def show_favourites():
     
     index = 0 # SETS INITIAL INDEX TO 0
     
+    # IF FAV LIST EMPTY, SHOW MESSAGE
+    if len(fav_list) == 0:
+        print(RED + 'Favourite list empty' + RESET)
+        
     # PRINT LIST OF FAVOURITES
     for movie in fav_list:
         index += 1
