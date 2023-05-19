@@ -94,9 +94,9 @@ def get_selection():
             if int(selection) == 1:
                 show_movies()
             elif int(selection) == 2:
-                show_favourites()
+                show_custom_list(list=fav_list, list_name_string='favourites')
             elif int(selection) == 3:
-                show_watchlist()
+                show_custom_list(list=watch_list, list_name_string='watch list')
             elif int(selection) == 4:
                 show_top_100()
             elif int(selection) == 5:
@@ -106,120 +106,6 @@ def get_selection():
                 print(RED + '\nInvalid choice; please choose a valid option' + RESET)
                 continue
                 
-   
-# SHOW FAV LIST
-def show_favourites(removed = None):
-    clear_screen()
-    
-    # PRINT LIST HEADERS
-    print(BG_GREEN + f'{list_headers}' + RESET)
-    
-    index = 0 # SETS INITIAL INDEX TO 0
-    
-    # IF FAV LIST EMPTY, SHOW MESSAGE
-    if len(fav_list) == 0:
-        print(RED + 'Favourite list empty' + RESET)
-        
-    # PRINT LIST OF FAVOURITES
-    for movie in fav_list:
-        index += 1
-        movie.index = index
-        print(BG_BLUE + f'{movie}' + RESET)
-    print(BG_GREEN + f'{list_headers}' + RESET)
-    
-    # PRINTS REMOVED FAVOURITE IF APPLICABLE
-    if removed:
-      print(RED + f'\n{removed.title} removed from favourites' + RESET)
-
-    # SHOW OPTIONS MENU
-    print(GREEN + '\nPlease select an option from the menu below:')
-    print('1 - Remove favourite')
-    print('0 - Exit to main menu' + RESET)
-    
-    while True:
-        try:
-            selection = int(input(YELLOW + '\nPlease enter a number from the menu: ' + RESET))
-        except:
-            print(RED + '\nInvalid choice; please choose a valid option' + RESET)
-        else:
-            if selection == 1:
-                remove_favourite()
-            elif selection == 0:
-                home_menu()
-            else:
-                print(RED + '\nInvalid choice; please choose a valid option' + RESET)
-                continue
-
-# SHOW WATCH LIST
-def show_watchlist(removed = None):
-    clear_screen()
-    
-    # PRINT LIST HEADERS
-    print(BG_GREEN + f'{list_headers}' + RESET)
-    
-    index = 0 # SETS INITIAL INDEX TO 0
-    
-    # IF WATCH LIST EMPTY, SHOW MESSAGE
-    if len(watch_list) == 0:
-        print(RED + 'Watch list empty' + RESET)
-        
-    # PRINT LIST OF WATCH LIST MOVIES
-    for movie in watch_list:
-        index += 1
-        movie.index = index
-        print(BG_BLUE + f'{movie}' + RESET)
-    print(BG_GREEN + f'{list_headers}' + RESET)
-    
-    # PRINTS REMOVED WATCH LIST MOVIE IF APPLICABLE
-    if removed:
-      print(RED + f'\n{removed.title} removed from watch list' + RESET)
-
-    # SHOW OPTIONS MENU
-    print(GREEN + '\nPlease select an option from the menu below:')
-    print('1 - Remove from watch list')
-    print('0 - Exit to main menu' + RESET)
-    
-    while True:
-        try:
-            selection = int(input(YELLOW + '\nPlease enter a number from the menu: ' + RESET))
-        except:
-            print(RED + '\nInvalid choice; please choose a valid option' + RESET)
-        else:
-            if selection == 1:
-                remove_watchlist()
-            elif selection == 0:
-                home_menu()
-            else:
-                print(RED + '\nInvalid choice; please choose a valid option' + RESET)
-                continue
-
-
-# REMOVE FROM WATCH LIST
-def remove_watchlist():
-    selection = int(input(YELLOW + '\nType the ID of the movie and press enter to remove from watch list: ' + RESET)) - 1
-    
-    # REMOVE SELECTED MOVIE FROM WATCH LIST
-    removed = watch_list.pop(selection)
-    
-    # SHOW FEEDBACK MSG
-    print(GREEN + f'\n{removed.title} removed from watch list\n' + RESET)
-    
-    # SHOW UPDATED WATCH LIST
-    show_watchlist(removed)
-
-
-# REMOVE FAVOURITE
-def remove_favourite():
-    selection = int(input(YELLOW + '\nType the ID of the movie and press enter to remove favourite: ' + RESET)) - 1
-    
-    # REMOVE SELECTED MOVIE FROM FAVOURITES
-    removed = fav_list.pop(selection)
-    
-    # SHOW FEEDBACK MSG
-    print(GREEN + f'\n{removed.title} removed from favourites\n' + RESET)
-    
-    # SHOW UPDATED FAVOURITES LIST
-    show_favourites(removed)
     
 # PROMPT USER ACTION ON MOVIES LIST 
 def select_user_action(genre_results = None, top_100 = None, search_results = None):
@@ -231,18 +117,65 @@ def select_user_action(genre_results = None, top_100 = None, search_results = No
     
     # IF FAVOURITE CHOSEN
     elif action == 1:
-        add_favourite(genre_results, top_100, search_results)
+        add_to_custom_list(genre_results, top_100, search_results, list=fav_list, list_name_string='favourites')
         
     # IF WATCH LIST CHOSEN
     elif action == 2:
-        add_watch(genre_results, top_100, search_results)
+        add_to_custom_list(genre_results, top_100, search_results, list=watch_list, list_name_string='watch list')
     
     # IF WATCHED (2) CHOSEN
     else:
         pass # TODO
         
+    
+# SHOW WATCH/FAV LIST
+def show_custom_list(removed = None, list=None, list_name_string=None):
+    clear_screen()
+    print(list)
+    print(list_name_string)
+    # PRINT LIST HEADERS
+    print(BG_GREEN + f'{list_headers}' + RESET)
+    
+    index = 0 # SETS INITIAL INDEX TO 0
+    
+    # IF LIST EMPTY, SHOW MESSAGE
+    if len(list) == 0 or len(list) is None:
+        print(RED + f'{list_name_string} list empty' + RESET)
+        
+    # PRINT LIST OF WATCH LIST MOVIES
+    for movie in list:
+        index += 1
+        movie.index = index
+        print(BG_BLUE + f'{movie}' + RESET)
+    print(BG_GREEN + f'{list_headers}' + RESET)
+    
+    # PRINTS REMOVED WATCH LIST MOVIE IF APPLICABLE
+    if removed:
+      print(RED + f'\n{removed.title} removed from {list_name_string} list' + RESET)
+
+    # SHOW OPTIONS MENU
+    print(GREEN + '\nPlease select an option from the menu below:')
+    print(f'1 - Remove from {list_name_string} list')
+    print('0 - Exit to main menu' + RESET)
+    
+    while True:
+        try:
+            selection = int(input(YELLOW + '\nPlease enter a number from the menu: ' + RESET))
+        except:
+            print(RED + '\nInvalid choice; please choose a valid option' + RESET)
+        else:
+            if selection == 1:
+                remove_from_custom_list(list=list, list_name_string=list_name_string)
+            elif selection == 0:
+                home_menu()
+            else:
+                print(RED + '\nInvalid choice; please choose a valid option' + RESET)
+                continue
+    
+    
+    
 # FOR USER TO ADD A FAVOURITE TO LIST
-def add_favourite(genre_results = None, top_100 = None, search_results = None):
+def add_to_custom_list(genre_results = None, top_100 = None, search_results = None, list=None, list_name_string=None):
     
     # CHECK WHERE USER IS COMING FROM TO GET CORRECT MOVIE LIST
     if top_100:
@@ -254,17 +187,17 @@ def add_favourite(genre_results = None, top_100 = None, search_results = None):
     else:
         movies = get_movies()
     
-    favourite = None
-    while favourite is None:
+    add_movie = None
+    while add_movie is None:
         try:
             # ENTER # OF MOVIE
-            favourite = int(input(YELLOW + '\nType the ID of the movie and press enter to add favourite: ' + RESET)) - 1
+            add_movie = int(input(YELLOW + f'\nType the ID of the movie and press enter to add to {list_name_string}: ' + RESET)) - 1
             
             # CHECK IF MOVIE ALREADY IN FAVOURITES
-            if movies[favourite].title not in [movie.title for movie in fav_list]:
+            if movies[add_movie].title not in [movie.title for movie in list]:
                 # ADD CHOICE TO FAV LIST
-                fav_list.append(movies[favourite])
-                print(GREEN + f'\n{movies[favourite].title} added to favourites' + RESET)
+                list.append(movies[add_movie])
+                print(GREEN + f'\n{movies[add_movie].title} added to {list_name_string}' + RESET)
             
             else:
                 raise TypeError
@@ -272,21 +205,21 @@ def add_favourite(genre_results = None, top_100 = None, search_results = None):
         # ERROR FOR INVALID CHOICE         
         except (ValueError, IndexError):
             print(RED + '\nInvalid choice; please choose a valid option' + RESET)
-            favourite = None
+            add_movie = None
         
         # ERROR IF ALREADY IN FAVOURITES
         except TypeError:
-            print(RED + f'\n{movies[favourite].title} already in favourites' + RESET)
+            print(RED + f'\n{movies[add_movie].title} already in {list_name_string}' + RESET)
     
     user_continue = None
     while user_continue not in ['y', 'n', 'Y', 'N']:
         
         # PROMPT USER FOR Y/N TO CONTINUE
-        user_continue = input(YELLOW + '\nDo you want to add another favourite? (Y/N) ' + RESET)
+        user_continue = input(YELLOW + f'\nDo you want to add another movie to {list_name_string}? (Y/N) ' + RESET)
 
         # IF YES - ASK AGAIN
         if user_continue.lower() == 'y':
-            add_favourite(movies)
+            add_to_custom_list(movies, list=list, list_name_string=list_name_string)
             
         # IF NO - QUIT
         elif user_continue.lower() == 'n':
@@ -296,64 +229,21 @@ def add_favourite(genre_results = None, top_100 = None, search_results = None):
         else:
             print(RED + '\nInvalid choice; please choose a valid option (Y/N)' + RESET)
 
-    return fav_list
-
-# FOR USER TO ADD A FAVOURITE TO LIST
-def add_watch(genre_results = None, top_100 = None, search_results = None):
+    return list
     
-    # CHECK WHERE USER IS COMING FROM TO GET CORRECT MOVIE LIST
-    if top_100:
-        movies = create_top_100()
-    elif genre_results:
-        movies = genre_results
-    elif search_results:
-        movies = search_results
-    else:
-        movies = get_movies()
     
-    watch = None
-    while watch is None:
-        try:
-            # ENTER # OF MOVIE
-            watch = int(input(YELLOW + '\nType the ID of the movie and press enter to add to watch list: ' + RESET)) - 1
-            
-            # CHECK IF MOVIE ALREADY IN WATCH
-            if movies[watch].title not in [movie.title for movie in fav_list]:
-                # ADD CHOICE TO WATCH LIST
-                watch_list.append(movies[watch])
-                print(GREEN + f'\n{movies[watch].title} added to watch list' + RESET)
-            
-            else:
-                raise TypeError
-        
-        # ERROR FOR INVALID CHOICE         
-        except (ValueError, IndexError):
-            print(RED + '\nInvalid choice; please choose a valid option' + RESET)
-            watch = None
-        
-        # ERROR IF ALREADY IN WATCH LIST
-        except TypeError:
-            print(RED + f'\n{movies[watch].title} already in watch list' + RESET)
+# REMOVE FROM WATCH/FAV LIST
+def remove_from_custom_list(list=None, list_name_string=None):
+    selection = int(input(YELLOW + f'\nType the ID of the movie and press enter to remove from {list_name_string}: ' + RESET)) - 1
     
-    user_continue = None
-    while user_continue not in ['y', 'n', 'Y', 'N']:
-        
-        # PROMPT USER FOR Y/N TO CONTINUE
-        user_continue = input(YELLOW + '\nDo you want to add another movie to watch list? (Y/N) ' + RESET)
-
-        # IF YES - ASK AGAIN
-        if user_continue.lower() == 'y':
-            add_watch(movies)
-            
-        # IF NO - QUIT
-        elif user_continue.lower() == 'n':
-            home_menu()
+    # REMOVE SELECTED MOVIE FROM WATCH LIST
+    removed = list.pop(selection)
     
-    # IF INVALID CHOICE - KEEP ASKING
-        else:
-            print(RED + '\nInvalid choice; please choose a valid option (Y/N)' + RESET)
-
-    return watch_list
+    # SHOW FEEDBACK MSG
+    print(GREEN + f'\n{removed.title} removed from {list_name_string}\n' + RESET)
+    
+    # SHOW UPDATED WATCH LIST
+    show_custom_list(removed, list=list, list_name_string=list_name_string)
 
 
 # CREATE TOP 100 MOVIES LIST
