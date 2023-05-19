@@ -34,6 +34,10 @@ class Movie:
         # PRINT FORMAT FOR MOVIES
         return f'{self.index:<8}{textwrap.shorten(self.title, width=40, placeholder="..."):<45}{self.date:<6}{self.runtime:<6}{self.rating:<6}{self.votes:>7}'
 
+# CLEAR TERMINAL SCREEN
+def clear_screen():
+    print("\033c")
+
 # GETS DATA FROM IMDB DATASET AND STORES IN LIST
 def get_movies():
     with open(DATASET, "r") as f:
@@ -54,6 +58,7 @@ def get_movies():
 
 # SHOWS MOVIE LIST
 def show_movies():
+    clear_screen()
     movies = get_movies()
 
     # PRINT LIST HEADERS
@@ -68,6 +73,7 @@ def show_movies():
 
 # HOME MENU FOR USER SELECTION
 def home_menu():
+    clear_screen()
     print(GREEN + '\nPlease select an option from the menu below:')
     print('1 - Show all movies')
     print('2 - Show favourites')
@@ -99,7 +105,8 @@ def get_selection():
                 
    
 # SHOW FAV LIST
-def show_favourites():
+def show_favourites(removed = None):
+    clear_screen()
     
     # PRINT LIST HEADERS
     print(BG_GREEN + f'{list_headers}' + RESET)
@@ -117,6 +124,10 @@ def show_favourites():
         print(BG_BLUE + f'{movie}' + RESET)
     print(BG_GREEN + f'{list_headers}' + RESET)
     
+    # PRINTS REMOVED FAVOURITE IF APPLICABLE
+    if removed:
+      print(RED + f'\n{removed.title} removed from favourites' + RESET)
+
     # SHOW OPTIONS MENU
     print(GREEN + '\nPlease select an option from the menu below:')
     print('1 - Remove favourite')
@@ -147,7 +158,7 @@ def remove_favourite():
     print(GREEN + f'\n{removed.title} removed from favourites\n' + RESET)
     
     # SHOW UPDATED FAVOURITES LIST
-    show_favourites()
+    show_favourites(removed)
     
 # PROMPT USER ACTION ON MOVIES LIST 
 def select_user_action(genre_results = None, top_100 = None, search_results = None):
@@ -239,6 +250,7 @@ def create_top_100():
 
 # SHOWS TOP 100 LIST OF MOVIES
 def show_top_100():
+    clear_screen()
     top_100 = create_top_100()
     
     # PRINT LIST OF TOP 100 MOVIES
@@ -253,6 +265,7 @@ def show_top_100():
 
 # BROWSE ALL MOVIES
 def browse_movies():
+    clear_screen()
     action = None
     while action not in ['0', '1', '2', '3']:
         print(GREEN + '\nSelect from the following:\n1 - Search movies\n2 - Browse by genre\n3 - Browse by year\n0 - Exit to menu' + RESET + '\n')
@@ -271,6 +284,7 @@ def browse_movies():
         
 # SEARCH MOVIES BY TITLE
 def browse_movies_search():
+    clear_screen()
     movies = get_movies()
     query = input(YELLOW + "Enter a search query: " + RESET)
     search_results = []
@@ -307,6 +321,7 @@ def browse_movies_search():
     
 # BROWSE MOVIES BY GENRE
 def browse_movies_genre():
+    clear_screen()
     movies = get_movies() # GET LIST OF ALL MOVIES
     genres = get_genres() # GET LIST OF GENRES
     print(GREEN + '\nSelect from the following: ' + RESET)
@@ -315,7 +330,7 @@ def browse_movies_genre():
     # PRINT LIST OF GENRES TO CHOOSE
     for genre in genres:
         i += 1
-        print(BG_BLUE + f'{i} - {genre}' + RESET)
+        print(BG_BLUE + f'{i:<2} - {genre:<15}' + RESET)
     
     
     genre_index = None
@@ -323,6 +338,7 @@ def browse_movies_genre():
         try:
             # GET USER GENRE CHOICE
             genre_index = int(input(YELLOW + '\nSelect a genre from the list: ' + RESET)) - 1
+            clear_screen()
             genre_choice = genres[genre_index]
             genre_results = create_genre_results(movies, genre_choice)
             
