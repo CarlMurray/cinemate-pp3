@@ -79,9 +79,7 @@ def get_movies():
     with open(DATASET, "r", encoding="utf-8") as f:
         tsv_f = csv.DictReader(f, delimiter="\t")
         global all_movies 
-        index = 0
-        for row in tsv_f:
-            index += 1
+        for index, row in enumerate(tsv_f, start=1):
             title = row["primaryTitle"]
             date = row["startYear"]
             runtime = row["runtimeMinutes"]
@@ -108,8 +106,7 @@ def show_movies():
 
     # PRINT EACH MOVIE
     index = 0
-    for movie in all_movies:
-        index+=1
+    for index, movie in enumerate(all_movies, start=1):
         movie.index = index
         print(BG_BLUE + f"{movie}" + RESET)
     # PRINT LIST HEADERS AT BTM OF LIST
@@ -241,8 +238,7 @@ def show_custom_list(removed=None, custom_list=None, list_name_string=None):
         print(RED + f"{list_name_string} list empty" + RESET)
 
     # PRINT LIST OF MOVIES
-    for movie in custom_list:
-        index += 1
+    for index, movie in enumerate(custom_list, start=1):
         movie.index = index
         print(BG_BLUE + f"{movie}" + RESET)
     print(BG_GREEN + f"{list_headers}" + RESET)
@@ -461,8 +457,7 @@ def show_top_100():
     # PRINT LIST OF TOP 100 MOVIES
     index = 0
     print(BG_GREEN + f"{list_headers}" + RESET)
-    for movie in top_100:
-        index += 1
+    for index, movie in enumerate(top_100, start=1):
         movie.index = index
         print(BG_BLUE + f"{movie}" + RESET)
     print(BG_GREEN + f"{list_headers}" + RESET)
@@ -508,16 +503,14 @@ def browse_movies_search():
 
     global all_movies
     clear_screen()
-    movies = all_movies
+    movies = all_movies.copy()
     query = input(YELLOW + "Enter a search query: " + RESET)
     search_results = []
-    index = 0
     print(BG_GREEN + f"{list_headers}" + RESET)
     for movie in movies:
         if query.lower() in movie.title.lower():
-            index += 1
-            movie.index = index
             search_results.append(movie)
+            movie.index = len(search_results)
             print(BG_BLUE + f"{movie}" + RESET)
         else:
             pass
@@ -560,9 +553,8 @@ def browse_movies_genre():
     i = 0  # GENRE INDEX
 
     # PRINT LIST OF GENRES TO CHOOSE
-    for genre in genres:
-        i += 1
-        print(BG_BLUE + f"{i:<2} - {genre:<15}" + RESET)
+    for index, genre in enumerate(genres, start=1):
+        print(BG_BLUE + f"{index:<2} - {genre:<15}" + RESET)
 
     genre_index = None
     while genre_index is None:
@@ -610,7 +602,6 @@ def create_genre_results(movies, genre_choice):
         list: List of movies to print to screen.
     """
     search_results = []
-    index = 0
     print(BG_GREEN + f"{list_headers}" + RESET)
 
     # ITERATE THROUGH ALL MOVIES
@@ -618,9 +609,8 @@ def create_genre_results(movies, genre_choice):
 
         # IF USERS GENRE MATCHES MOVIE, PRINT MOVIE
         if genre_choice in movie.genres:
-            index += 1
-            movie.index = index
             search_results.append(movie)
+            movie.index = len(search_results)
             print(BG_BLUE + f"{movie}" + RESET)
     print(BG_GREEN + f"{list_headers}" + RESET)
     return search_results
@@ -665,7 +655,6 @@ def browse_movies_year():
     global all_movies
     movies = all_movies
     search_results = []
-    index = 0
     query = None
     while query is None:
         try:
@@ -683,9 +672,8 @@ def browse_movies_year():
     print(BG_GREEN + f"{list_headers}" + RESET)
     for movie in movies:
         if query in movie.date:
-            index += 1
-            movie.index = index
             search_results.append(movie)
+            movie.index = len(search_results)
             print(BG_BLUE + f"{movie}" + RESET)
         else:
             pass
