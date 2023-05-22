@@ -17,9 +17,22 @@ all_movies = []  # LIST FOR ALL MOVIES
 top_100 = []
 
 # LIST HEADER FORMATTING
-list_headers = f'{"#":<8}{"Title":<45}{"Year":<6}{"Mins":<6}{"/10":<6}{"Votes":>7}'
+list_headers = BG_GREEN + f'{"#":<8}{"Title":<45}{"Year":<6}{"Mins":<6}{"/10":<6}{"Votes":>7}' + RESET
 
-
+class Movies:
+    def __init__(self, top_100, all_movies):
+        self.top_100 = top_100
+        self.all_movies = all_movies
+        
+    def print_movies(self, movies_list):
+        movies = movies_list.copy()
+        print(list_headers)
+        for index, movie in enumerate(movies_list, start=1):
+            movie.index = index
+            print(BG_BLUE + f"{movie}" + RESET)
+        print(list_headers)
+        
+        
 # MOVIE CLASS
 class Movie:
     def __init__(self, index, title, date, runtime, genres, rating, votes):
@@ -701,4 +714,5 @@ def browse_movies_year():
 
 get_movies()
 create_top_100()
+movies = Movies(top_100, all_movies)
 home_menu()
