@@ -13,6 +13,8 @@ RESET = "\033[0m"
 DATASET = "movie_data.tsv"  # FILE PATH FOR IMDB DATASET
 fav_list = []  # LIST OF USER FAVOURITES
 watch_list = []  # USER WATCH LIST
+all_movies = []  # LIST FOR ALL MOVIES
+top_100 = []
 
 # LIST HEADER FORMATTING
 list_headers = f'{"#":<8}{"Title":<45}{"Year":<6}{"Mins":<6}{"/10":<6}{"Votes":>7}'
@@ -76,7 +78,7 @@ def get_movies():
 
     with open(DATASET, "r", encoding="utf-8") as f:
         tsv_f = csv.DictReader(f, delimiter="\t")
-        movies = []
+        global all_movies 
         index = 0
         for row in tsv_f:
             index += 1
@@ -87,8 +89,8 @@ def get_movies():
             rating = row["averageRating"]
             votes = row["numVotes"]
             movie = Movie(index, title, date, runtime, genres, rating, votes)
-            movies.append(movie)
-    return movies
+            all_movies.append(movie)
+        return all_movies
 
 
 # SHOWS MOVIE LIST
@@ -99,13 +101,16 @@ def show_movies():
     """
 
     clear_screen()
-    movies = get_movies()
+    global all_movies
 
     # PRINT LIST HEADERS
     print(BG_GREEN + f"{list_headers}" + RESET)
 
     # PRINT EACH MOVIE
-    for movie in movies:
+    index = 0
+    for movie in all_movies:
+        index+=1
+        movie.index = index
         print(BG_BLUE + f"{movie}" + RESET)
     # PRINT LIST HEADERS AT BTM OF LIST
     print(BG_GREEN + f"{list_headers}" + RESET)
@@ -306,13 +311,14 @@ def add_to_custom_list(
 
     # CHECK WHERE USER IS COMING FROM TO GET CORRECT MOVIE LIST
     if top_100:
-        movies = create_top_100()
+        movies = top_100
     elif genre_results:
         movies = genre_results
     elif search_results:
         movies = search_results
     else:
-        movies = get_movies()
+        global all_movies
+        movies = all_movies
 
     add_movie = None
     while add_movie is None:
@@ -428,8 +434,9 @@ def create_top_100():
     Returns:
         top_100: List of Top 100 rated movies
     """
-
-    movies = get_movies()  # GET ALL MOVIES
+    global top_100
+    global all_movies
+    movies = all_movies.copy()  # GET ALL MOVIES
 
     # SORT BY NUM VOTES
     sorted_by_votes = sorted(movies, key=lambda movie: int(movie.votes), reverse=True)
@@ -440,8 +447,6 @@ def create_top_100():
     # SORT MOST VOTED MOVIES BY RATING
     top_100 = sorted(top_100, key=lambda movie: float(movie.rating), reverse=True)
 
-    return top_100
-
 
 # SHOWS TOP 100 LIST OF MOVIES
 def show_top_100():
@@ -451,7 +456,7 @@ def show_top_100():
     """
 
     clear_screen()
-    top_100 = create_top_100()
+    global top_100
 
     # PRINT LIST OF TOP 100 MOVIES
     index = 0
@@ -501,8 +506,9 @@ def browse_movies_search():
     search query
     """
 
+    global all_movies
     clear_screen()
-    movies = get_movies()
+    movies = all_movies
     query = input(YELLOW + "Enter a search query: " + RESET)
     search_results = []
     index = 0
@@ -547,7 +553,8 @@ def browse_movies_genre():
     """
 
     clear_screen()
-    movies = get_movies()  # GET LIST OF ALL MOVIES
+    global all_movies
+    movies = all_movies  # GET LIST OF ALL MOVIES
     genres = get_genres()  # GET LIST OF GENRES
     print(GREEN + "\nSelect from the following: " + RESET)
     i = 0  # GENRE INDEX
@@ -629,7 +636,9 @@ def get_genres():
     Returns:
         list: List of unique genres in entire dataset
     """
-    movies = get_movies()
+    
+    global all_movies
+    movies = all_movies
     genres_array = []  # ARRAY TO STORE GENRES
 
     # ITERATE THROUGH ALL MOVIES, ADD GENRES TO ARRAY
@@ -653,7 +662,8 @@ def browse_movies_year():
     Raises:
         ValueError: Year entered outside of accepted range.
     """
-    movies = get_movies()
+    global all_movies
+    movies = all_movies
     search_results = []
     index = 0
     query = None
