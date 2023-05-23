@@ -93,7 +93,17 @@ The below diagram shows the relationship between the `Movie` and `Movies` Classe
 
 # Testing
 
-## Test Process
+## Manual Test Process
+
+| Test                        | Action                                                                                                      | Success Criteria                                                                                                                                         |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Navigation                  | Starting from the home menu, navigate through the application, checking that correct action is taken according to user input               | Navigation works as expected. Accepts only inputs shown on menu options. Invalid inputs are handled. Successfully navigate from main menu to sub-menus and vice versa. |
+| User input                  | Test all instances where user input is required. Enter valid and invalid inputs.                             | Invalid inputs are handled gracefully. Error message shown. User prompted to try again.                                                                |
+| Browse movies by search     | Enter search query that matches a known movie in the dataset. Enter random invalid search query.             | Valid queries show relevant search results. Invalid queries are handled gracefully.                                                                      |
+| Browse movies by year       | Browse by year at both ends of accepted input limits. Browse by year within accepted input limits. Browse by year outside of accepted input limits. | Relevant movies shown according to year input. Invalid inputs outside of accepted range are handled gracefully.                                         |
+| Browsing movies by genre    | Test browsing by 5 different genres.                                                                         | Genre list prints as expected. Input matches list index. Relevant movies shown according to selected genre.                                            |
+| Movie list presentation     | Check: show all; show top 100; show favourites; show watch list; browse by genre/year/search to ensure lists print as intended               | Only relevant movie lists print for the given context. Index numbering is correct.                                                                       |
+| Favourites/watch list       | Add 5 random movies to both favourites and watch list. View favourites/watch list. Remove all movies from lists. y. Add to lists from various contexts (e.g. from search results, top 100 etc.) | Correct movies added to list. Lists print correctly. Feedback messages shown on add/remove. Empty list message shown if empty.                            |
 
 ## Bugs
 
