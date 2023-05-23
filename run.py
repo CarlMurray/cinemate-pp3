@@ -178,38 +178,46 @@ def select_user_action(genre_results=None, top_100=None, search_results=None):
         search_results: Passed if user is currently viewing
         search results
     """
+    action = None
+    while action not in range(0, 3):
+        try:
+            action = int(
+                input(
+                    GREEN
+                    + "\nSelect from the following:\n1 - Add a favourite\n2 - Add to watched\n0 - Exit to menu\n"
+                    + RESET
+                )
+            )
+            if action not in range(0,3):
+                raise ValueError
+        
+        except ValueError:
+            print(RED + "\nInvalid choice; please choose a valid option" + RESET)
 
-    action = int(
-        input(
-            GREEN
-            + "\nSelect from the following:\n1 - Add a favourite\n2 - Add to watched\n0 - Exit to menu\n"
-            + RESET
-        )
-    )
+        else:
+            # IF EXIT CHOSEN
+            if action == 0:
+                home_menu()
 
-    # IF EXIT CHOSEN
-    if action == 0:
-        home_menu()
+            # IF FAVOURITE CHOSEN
+            elif action == 1:
+                add_to_custom_list(
+                    genre_results,
+                    top_100,
+                    search_results,
+                    custom_list=fav_list,
+                    list_name_string="favourites",
+                )
 
-    # IF FAVOURITE CHOSEN
-    elif action == 1:
-        add_to_custom_list(
-            genre_results,
-            top_100,
-            search_results,
-            custom_list=fav_list,
-            list_name_string="favourites",
-        )
-
-    # IF WATCH LIST CHOSEN
-    elif action == 2:
-        add_to_custom_list(
-            genre_results,
-            top_100,
-            search_results,
-            custom_list=watch_list,
-            list_name_string="watch list",
-        )
+            # IF WATCH LIST CHOSEN
+            elif action == 2:
+                add_to_custom_list(
+                    genre_results,
+                    top_100,
+                    search_results,
+                    custom_list=watch_list,
+                    list_name_string="watch list",
+                )
 
 
 # SHOW WATCH/FAV LIST
