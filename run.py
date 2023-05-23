@@ -11,10 +11,8 @@ BG_GREEN = "\033[42m"
 RESET = "\033[0m"
 
 DATASET = "movie_data.tsv"  # FILE PATH FOR IMDB DATASET
-fav_list = []  # LIST OF USER FAVOURITES
-watch_list = []  # USER WATCH LIST
 all_movies = []  # LIST FOR ALL MOVIES
-top_100 = []
+top_100 = []  # LIST FOR TOP 100 MOVIES
 
 # LIST HEADER FORMATTING
 list_headers = BG_GREEN + f'{"#":<8}{"Title":<45}{"Year":<6}{"Mins":<6}{"/10":<6}{"Votes":>7}' + RESET
@@ -23,6 +21,8 @@ class Movies:
     def __init__(self, top_100, all_movies):
         self.top_100 = top_100
         self.all_movies = all_movies
+        self.favourites = []
+        self.watchlist = []
 
     def print_movies(self, movies_list):
         movies = movies_list.copy()
@@ -152,9 +152,9 @@ def get_selection():
             if selection == 1:
                 show_movies()
             elif selection == 2:
-                show_custom_list(custom_list=fav_list, list_name_string="favourites")
+                show_custom_list(custom_list=movies.favourites, list_name_string="favourites")
             elif selection == 3:
-                show_custom_list(custom_list=watch_list, list_name_string="watch list")
+                show_custom_list(custom_list=movies.watchlist, list_name_string="watch list")
             elif selection == 4:
                 show_top_100()
             elif selection == 5:
@@ -205,7 +205,7 @@ def select_user_action(genre_results=None, top_100=None, search_results=None):
                     genre_results,
                     top_100,
                     search_results,
-                    custom_list=fav_list,
+                    custom_list=movies.favourites,
                     list_name_string="favourites",
                 )
 
@@ -215,7 +215,7 @@ def select_user_action(genre_results=None, top_100=None, search_results=None):
                     genre_results,
                     top_100,
                     search_results,
-                    custom_list=watch_list,
+                    custom_list=movies.watchlist,
                     list_name_string="watch list",
                 )
 
