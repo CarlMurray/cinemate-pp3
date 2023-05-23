@@ -108,9 +108,13 @@ The below diagram shows the relationship between the `Movie` and `Movies` Classe
 ## Bugs
 
 ### Resolved
+1. When initially testing the 'Add to favourites' feature, I found that when trying to add a favourite from a movie list other than `"Show all movies"` (e.g. adding a favourite from a list of search results), an incorrect movie would be added. This was due to the add-to-favourites function referencing the main list of movies rather than e.g. the search results list. This was fixed by passing an argument to the function to check where the user is coming from i.e. check whether they are trying to add a favourite from a list of search results, top 100 list etc.
+2. During development, I noticed a bug where the first 100 movies in `"Show all movies"` would print with incorrect index numbers, **only** after `"Showing top 100"`. This was due to the `Top 100` movies being assigned a new `index` when printing, and not being reassigned to their original value afterwards. This was fixed by using `enumerate()` in the `Movies.print_movies()` method to reassign the correct `index` when printing.
+
+![Screenshot of terminal showing incorrectly numbered movie list](/assets/readme/img/bug-index.png "List index bug")
 
 ### Unresolved
-
+- No unresolved bugs
 ---
 
 # Deployment
