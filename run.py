@@ -238,28 +238,23 @@ def show_custom_list(removed=None, custom_list=None, list_name_string=None):
 
     clear_screen()
 
-    # PRINT LIST HEADERS
-    print(BG_GREEN + f"{list_headers}" + RESET)
-
-    index = 0  # SETS INITIAL INDEX TO 0
-
     # IF LIST EMPTY, SHOW MESSAGE
     if len(custom_list) == 0 or len(custom_list) is None:
-        print(RED + f"{list_name_string} list empty" + RESET)
+        print(list_headers)
+        print(RED + f"{list_name_string} empty" + RESET)
+        print(list_headers)
 
-    # PRINT LIST OF MOVIES
-    for index, movie in enumerate(custom_list, start=1):
-        movie.index = index
-        print(BG_BLUE + f"{movie}" + RESET)
-    print(BG_GREEN + f"{list_headers}" + RESET)
-
+        # ELSE PRINT LIST OF MOVIES
+    else:
+        movies.print_movies(custom_list)
+    
     # PRINTS REMOVED MOVIE IF APPLICABLE
     if removed:
-        print(RED + f"\n{removed.title} removed from {list_name_string} list" + RESET)
+        print(RED + f"\n{removed.title} removed from {list_name_string}" + RESET)
 
     # SHOW OPTIONS MENU
     print(GREEN + "\nPlease select an option from the menu below:")
-    print(f"1 - Remove from {list_name_string} list")
+    print(f"1 - Remove from {list_name_string}")
     print("0 - Exit to main menu" + RESET)
 
     while True:
