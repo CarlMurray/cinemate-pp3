@@ -23,7 +23,7 @@ class Movies:
     def __init__(self, top_100, all_movies):
         self.top_100 = top_100
         self.all_movies = all_movies
-        
+
     def print_movies(self, movies_list):
         movies = movies_list.copy()
         print(list_headers)
@@ -31,8 +31,8 @@ class Movies:
             movie.index = index
             print(BG_BLUE + f"{movie}" + RESET)
         print(list_headers)
-        
-        
+
+
 # MOVIE CLASS
 class Movie:
     def __init__(self, index, title, date, runtime, genres, rating, votes):
@@ -112,18 +112,7 @@ def show_movies():
     """
 
     clear_screen()
-    global all_movies
-
-    # PRINT LIST HEADERS
-    print(BG_GREEN + f"{list_headers}" + RESET)
-
-    # PRINT EACH MOVIE
-    index = 0
-    for index, movie in enumerate(all_movies, start=1):
-        movie.index = index
-        print(BG_BLUE + f"{movie}" + RESET)
-    # PRINT LIST HEADERS AT BTM OF LIST
-    print(BG_GREEN + f"{list_headers}" + RESET)
+    movies.print_movies(all_movies)
     select_user_action()
 
 
@@ -465,15 +454,7 @@ def show_top_100():
     """
 
     clear_screen()
-    global top_100
-
-    # PRINT LIST OF TOP 100 MOVIES
-    index = 0
-    print(BG_GREEN + f"{list_headers}" + RESET)
-    for index, movie in enumerate(top_100, start=1):
-        movie.index = index
-        print(BG_BLUE + f"{movie}" + RESET)
-    print(BG_GREEN + f"{list_headers}" + RESET)
+    movies.print_movies(top_100)
     select_user_action(top_100)
 
 
@@ -514,20 +495,15 @@ def browse_movies_search():
     search query
     """
 
-    global all_movies
     clear_screen()
-    movies = all_movies.copy()
     query = input(YELLOW + "Enter a search query: " + RESET)
     search_results = []
-    print(BG_GREEN + f"{list_headers}" + RESET)
-    for movie in movies:
+    for movie in movies.all_movies:
         if query.lower() in movie.title.lower():
             search_results.append(movie)
-            movie.index = len(search_results)
-            print(BG_BLUE + f"{movie}" + RESET)
         else:
             pass
-    print(BG_GREEN + f"{list_headers}" + RESET)
+    movies.print_movies(search_results)
     if len(search_results) == 0:
         print(RED + "No matches found" + RESET)
 
@@ -559,11 +535,8 @@ def browse_movies_genre():
     """
 
     clear_screen()
-    global all_movies
-    movies = all_movies  # GET LIST OF ALL MOVIES
     genres = get_genres()  # GET LIST OF GENRES
     print(GREEN + "\nSelect from the following: " + RESET)
-    i = 0  # GENRE INDEX
 
     # PRINT LIST OF GENRES TO CHOOSE
     for index, genre in enumerate(genres, start=1):
@@ -615,17 +588,15 @@ def create_genre_results(movies, genre_choice):
         list: List of movies to print to screen.
     """
     search_results = []
-    print(BG_GREEN + f"{list_headers}" + RESET)
 
     # ITERATE THROUGH ALL MOVIES
-    for movie in movies:
+    for movie in movies.all_movies:
 
         # IF USERS GENRE MATCHES MOVIE, PRINT MOVIE
         if genre_choice in movie.genres:
             search_results.append(movie)
             movie.index = len(search_results)
-            print(BG_BLUE + f"{movie}" + RESET)
-    print(BG_GREEN + f"{list_headers}" + RESET)
+    movies.print_movies(search_results)
     return search_results
 
 
@@ -640,12 +611,10 @@ def get_genres():
         list: List of unique genres in entire dataset
     """
     
-    global all_movies
-    movies = all_movies
     genres_array = []  # ARRAY TO STORE GENRES
 
     # ITERATE THROUGH ALL MOVIES, ADD GENRES TO ARRAY
-    for movie in movies:
+    for movie in movies.all_movies:
         for genre in movie.genres:
 
             # IF GENRE ALREADY IN ARRAY, SKIP
@@ -665,8 +634,6 @@ def browse_movies_year():
     Raises:
         ValueError: Year entered outside of accepted range.
     """
-    global all_movies
-    movies = all_movies
     search_results = []
     query = None
     while query is None:
@@ -682,15 +649,14 @@ def browse_movies_year():
             )
             query = None
 
-    print(BG_GREEN + f"{list_headers}" + RESET)
-    for movie in movies:
+    for movie in movies.all_movies:
         if query in movie.date:
             search_results.append(movie)
             movie.index = len(search_results)
-            print(BG_BLUE + f"{movie}" + RESET)
         else:
             pass
-    print(BG_GREEN + f"{list_headers}" + RESET)
+        
+    movies.print_movies(search_results)
 
     # PROMPT USER FOR Y/N TO CONTINUE
     user_continue = None
