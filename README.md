@@ -73,6 +73,10 @@ With CineMate, finding your next movie masterpiece has never been easier.
     - `watchlist`: A list of user-selected movies intended to be watched later by the user
 - The `print_movies` method takes either `top_100` or `all_movies` as arguments and prints them in a tabular list.
 
+### UML Class Diagram
+The below diagram shows the relationship between the `Movie` and `Movies` Classes:
+![UML class diagram showing Movies and Movie class relationship](/assets/readme/img/uml-class-diagram.png "UML class diagram")
+
 ---
 
 # Technologies Used
@@ -83,6 +87,7 @@ With CineMate, finding your next movie masterpiece has never been easier.
 - [Heroku](https://www.heroku.com/platform) was used for deployment
 - [Jupyter Notebooks](https://jupyter.org/) and [VS Code](https://code.visualstudio.com/) were used for development
 - The [Pandas](https://pandas.pydata.org/) library was used for processing the original datasets.
+- [mermaid.live](https://mermaid.live) was used to generate the UML Class Diagram
 
 ---
 
