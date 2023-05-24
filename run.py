@@ -15,16 +15,39 @@ all_movies = []  # LIST FOR ALL MOVIES
 top_100 = []  # LIST FOR TOP 100 MOVIES
 
 # LIST HEADER FORMATTING
-list_headers = BG_GREEN + f'{"#":<8}{"Title":<45}{"Year":<6}{"Mins":<6}{"/10":<6}{"Votes":>7}' + RESET
+list_headers = (BG_GREEN
+                + (
+                    f'{"#":<8}'
+                    f'{"Title":<45}'
+                    f'{"Year":<6}'
+                    f'{"Mins":<6}'
+                    f'{"/10":<6}'
+                    f'{"Votes":>7}'
+                   )
+                + RESET)
+
 
 class Movies:
     def __init__(self, top_100, all_movies):
+        """
+        Represents collection of all movies.
+
+        Args:
+            top_100 (list): Top 100 movies list
+            all_movies (list): List of all 1000 movies
+        """
         self.top_100 = top_100
         self.all_movies = all_movies
         self.favourites = []
         self.watchlist = []
 
     def print_movies(self, movies_list):
+        """
+        Prints movies in list format.
+
+        Args:
+            movies_list (list): List of movies passed to function for printing
+        """
         movies = movies_list.copy()
         print(list_headers)
         for index, movie in enumerate(movies_list, start=1):
@@ -66,7 +89,14 @@ class Movie:
         """
 
         # PRINT FORMAT FOR MOVIES
-        return f'{self.index:<8}{textwrap.shorten(self.title, width=40, placeholder="..."):<45}{self.date:<6}{self.runtime:<6}{self.rating:<6}{self.votes:>7}'
+        return (
+            f'{self.index:<8}'
+            f'{textwrap.shorten(self.title, width=40, placeholder="..."):<45}'
+            f'{self.date:<6}'
+            f'{self.runtime:<6}'
+            f'{self.rating:<6}'
+            f'{self.votes:>7}'
+            )
 
 
 # CLEAR TERMINAL SCREEN
@@ -91,12 +121,13 @@ def get_movies():
 
     with open(DATASET, "r", encoding="utf-8") as f:
         tsv_f = csv.DictReader(f, delimiter="\t")
-        global all_movies 
+        global all_movies
         for index, row in enumerate(tsv_f, start=1):
             title = row["primaryTitle"]
             date = row["startYear"]
             runtime = row["runtimeMinutes"]
-            genres = row["genres"].split(",")  # CONVERT GENRE STRING TO LIST OF STRINGS
+            # CONVERT GENRE STRING TO LIST OF STRINGS
+            genres = row["genres"].split(",")
             rating = row["averageRating"]
             votes = row["numVotes"]
             movie = Movie(index, title, date, runtime, genres, rating, votes)
@@ -144,28 +175,38 @@ def get_selection():
     while True:
         try:
             selection = int(
-                input(YELLOW + "\nPlease enter a number from the menu: " + RESET)
+                input(YELLOW
+                      + "\nPlease enter a number from the menu: "
+                      + RESET)
             )
         except ValueError:
-            print(RED + "\nInvalid choice; please choose a valid option" + RESET)
+            print(RED
+                  + "\nInvalid choice; please choose a valid option"
+                  + RESET)
         else:
             if selection == 1:
                 show_movies()
             elif selection == 2:
-                show_custom_list(custom_list=movies.favourites, list_name_string="favourites")
+                show_custom_list(custom_list=movies.favourites,
+                                 list_name_string="favourites")
             elif selection == 3:
-                show_custom_list(custom_list=movies.watchlist, list_name_string="watch list")
+                show_custom_list(custom_list=movies.watchlist,
+                                 list_name_string="watch list")
             elif selection == 4:
                 show_top_100()
             elif selection == 5:
                 browse_movies()
             else:
-                print(RED + "\nInvalid choice; please choose a valid option" + RESET)
+                print(RED
+                      + "\nInvalid choice; please choose a valid option"
+                      + RESET)
                 continue
 
 
 # PROMPT USER ACTION ON MOVIES LIST
-def select_user_action(genre_results=None, top_100=None, search_results=None):
+def select_user_action(genre_results=None,
+                       top_100=None,
+                       search_results=None):
 
     """
     Prompt user to select an option from menu and take appropriate action.
@@ -184,15 +225,20 @@ def select_user_action(genre_results=None, top_100=None, search_results=None):
             action = int(
                 input(
                     GREEN
-                    + "\nSelect from the following:\n1 - Add a favourite\n2 - Add to watched\n0 - Exit to menu\n"
+                    + '\nSelect from the following:\n'
+                    '1 - Add a favourite\n'
+                    '2 - Add to watched\n'
+                    '0 - Exit to menu\n'
                     + RESET
                 )
             )
-            if action not in range(0,3):
+            if action not in range(0, 3):
                 raise ValueError
-        
+
         except ValueError:
-            print(RED + "\nInvalid choice; please choose a valid option" + RESET)
+            print(RED
+                  + "\nInvalid choice; please choose a valid option"
+                  + RESET)
 
         else:
             # IF EXIT CHOSEN
@@ -221,7 +267,9 @@ def select_user_action(genre_results=None, top_100=None, search_results=None):
 
 
 # SHOW WATCH/FAV LIST
-def show_custom_list(removed=None, custom_list=None, list_name_string=None):
+def show_custom_list(removed=None,
+                     custom_list=None,
+                     list_name_string=None):
 
     """
     Shows specified custom list to user - either
@@ -247,10 +295,12 @@ def show_custom_list(removed=None, custom_list=None, list_name_string=None):
         # ELSE PRINT LIST OF MOVIES
     else:
         movies.print_movies(custom_list)
-    
+
     # PRINTS REMOVED MOVIE IF APPLICABLE
     if removed:
-        print(RED + f"\n{removed.title} removed from {list_name_string}" + RESET)
+        print(RED
+              + f"\n{removed.title} removed from {list_name_string}"
+              + RESET)
 
     # SHOW OPTIONS MENU
     print(GREEN + "\nPlease select an option from the menu below:")
@@ -260,19 +310,26 @@ def show_custom_list(removed=None, custom_list=None, list_name_string=None):
     while True:
         try:
             selection = int(
-                input(YELLOW + "\nPlease enter a number from the menu: " + RESET)
+                input(YELLOW
+                      + "\nPlease enter a number from the menu: "
+                      + RESET)
             )
         except ValueError:
-            print(RED + "\nInvalid choice; please choose a valid option" + RESET)
+            print(RED
+                  + "\nInvalid choice; please choose a valid option"
+                  + RESET)
         else:
             if selection == 1:
                 remove_from_custom_list(
-                    custom_list=custom_list, list_name_string=list_name_string
+                    custom_list=custom_list,
+                    list_name_string=list_name_string
                 )
             elif selection == 0:
                 home_menu()
             else:
-                print(RED + "\nInvalid choice; please choose a valid option" + RESET)
+                print(RED
+                      + "\nInvalid choice; please choose a valid option"
+                      + RESET)
                 continue
 
 
@@ -329,7 +386,9 @@ def add_to_custom_list(
                 int(
                     input(
                         YELLOW
-                        + f"\nType the ID of the movie and press enter to add to {list_name_string}: "
+                        + (f'\nType the ID of the movie and press '
+                            f'enter to add to '
+                            f'{list_name_string}: ')
                         + RESET
                     )
                 )
@@ -337,31 +396,34 @@ def add_to_custom_list(
             )
 
             # CHECK IF MOVIE ALREADY IN LIST
-            if movies[add_movie].title not in [movie.title for movie in custom_list]:
+            if movies[add_movie].title not in [movie.title
+                                               for movie
+                                               in custom_list]:
                 # ADD CHOICE TO LIST
                 custom_list.append(movies[add_movie])
                 print(
                     GREEN
-                    + f"\n{movies[add_movie].title} added to {list_name_string}"
+                    + f'\n{movies[add_movie].title} added to '
+                    f'{list_name_string}'
                     + RESET
                 )
 
             else:
                 raise TypeError
-            
-        except ValueError:
-            print(RED + "\nInvalid choice; please choose a valid option" + RESET)
 
         # ERROR FOR INVALID CHOICE
         except (ValueError, IndexError):
-            print(RED + "\nInvalid choice; please choose a valid option" + RESET)
+            print(RED
+                  + "\nInvalid choice; please choose a valid option"
+                  + RESET)
             add_movie = None
 
         # ERROR IF ALREADY IN LIST
         except TypeError:
             print(
                 RED
-                + f"\n{movies[add_movie].title} already in {list_name_string}"
+                + f'\n{movies[add_movie].title} already in '
+                f'{list_name_string}'
                 + RESET
             )
 
@@ -371,14 +433,17 @@ def add_to_custom_list(
         # PROMPT USER FOR Y/N TO CONTINUE
         user_continue = input(
             YELLOW
-            + f"\nDo you want to add another movie to {list_name_string}? (Y/N) "
+            + f'\nDo you want to add another movie to '
+            f' {list_name_string}? (Y/N) '
             + RESET
         )
 
         # IF YES - ASK AGAIN
         if user_continue.lower() == "y":
             add_to_custom_list(
-                movies, custom_list=custom_list, list_name_string=list_name_string
+                movies,
+                custom_list=custom_list,
+                list_name_string=list_name_string
             )
 
         # IF NO - QUIT
@@ -387,7 +452,9 @@ def add_to_custom_list(
 
         # IF INVALID CHOICE - KEEP ASKING
         else:
-            print(RED + "\nInvalid choice; please choose a valid option (Y/N)" + RESET)
+            print(RED
+                  + "\nInvalid choice; please choose a valid option (Y/N)"
+                  + RESET)
 
     return custom_list
 
@@ -412,7 +479,9 @@ def remove_from_custom_list(custom_list=None, list_name_string=None):
                 int(
                     input(
                         YELLOW
-                        + f"\nType the ID of the movie and press enter to remove from {list_name_string}: "
+                        + (f'\nType the ID of the movie and press '
+                            f'enter to remove from '
+                           f'{list_name_string}: ')
                         + RESET
                     )
                 )
@@ -422,16 +491,22 @@ def remove_from_custom_list(custom_list=None, list_name_string=None):
             # REMOVE SELECTED MOVIE FROM LIST
             removed = custom_list.pop(selection)
         except (ValueError, IndexError):
-            print(RED + "\nInvalid choice; please choose a valid option" + RESET)
+            print(RED
+                  + "\nInvalid choice; please choose a valid option"
+                  + RESET)
             selection = None
 
         else:
             # SHOW FEEDBACK MSG
-            print(GREEN + f"\n{removed.title} removed from {list_name_string}\n" + RESET)
+            print(GREEN
+                  + f"\n{removed.title} removed from {list_name_string}\n"
+                  + RESET)
 
             # SHOW UPDATED LIST
             show_custom_list(
-                removed, custom_list=custom_list, list_name_string=list_name_string
+                removed,
+                custom_list=custom_list,
+                list_name_string=list_name_string
             )
 
 
@@ -450,13 +525,17 @@ def create_top_100():
     movies = all_movies.copy()  # GET ALL MOVIES
 
     # SORT BY NUM VOTES
-    sorted_by_votes = sorted(movies, key=lambda movie: int(movie.votes), reverse=True)
+    sorted_by_votes = sorted(movies,
+                             key=lambda movie: int(movie.votes),
+                             reverse=True)
 
     # GET ONLY TOP 100 WITH MOST VOTES
     top_100 = sorted_by_votes[:100]
 
     # SORT MOST VOTED MOVIES BY RATING
-    top_100 = sorted(top_100, key=lambda movie: float(movie.rating), reverse=True)
+    top_100 = sorted(top_100,
+                     key=lambda movie: float(movie.rating),
+                     reverse=True)
 
 
 # SHOWS TOP 100 LIST OF MOVIES
@@ -483,11 +562,19 @@ def browse_movies():
     while action not in ["0", "1", "2", "3"]:
         print(
             GREEN
-            + "\nSelect from the following:\n1 - Search movies\n2 - Browse by genre\n3 - Browse by year\n0 - Exit to menu"
+            + "\nSelect from the following:\n"
+            "1 - Search movies\n"
+            "2 - Browse by genre\n"
+            "3 - Browse by year\n"
+            "0 - Exit to menu"
             + RESET
             + "\n"
         )
-        action = input(YELLOW + "Please enter a number from the menu: " + RESET)
+        action = input(
+            YELLOW
+            + "Please enter a number from the menu: "
+            + RESET
+            )
         if action == "1":
             browse_movies_search()
         elif action == "2":
@@ -497,7 +584,11 @@ def browse_movies():
         elif action == "0":
             home_menu()
         else:
-            print(RED + "\nInvalid choice; please choose a valid option" + RESET)
+            print(
+                RED
+                + "\nInvalid choice; please choose a valid option"
+                + RESET
+                )
 
 
 # SEARCH MOVIES BY TITLE
@@ -509,7 +600,11 @@ def browse_movies_search():
     """
 
     clear_screen()
-    query = input(YELLOW + "Enter a search query: " + RESET)
+    query = input(
+        YELLOW
+        + "Enter a search query: "
+        + RESET
+        )
     search_results = []
     for movie in movies.all_movies:
         if query.lower() in movie.title.lower():
@@ -518,16 +613,17 @@ def browse_movies_search():
             pass
     if len(search_results) == 0:
         print(RED + "No matches found" + RESET)
-        
+
     else:
         movies.print_movies(search_results)
-
 
     user_continue = None
     while user_continue not in ["y", "n", "Y", "N"]:
         # PROMPT USER FOR Y/N TO CONTINUE
         user_continue = input(
-            YELLOW + "\nDo you want to enter another search query? (Y/N) " + RESET
+            YELLOW
+            + "\nDo you want to enter another search query? (Y/N) "
+            + RESET
         )
 
         # IF YES - ASK AGAIN
@@ -540,7 +636,11 @@ def browse_movies_search():
 
         # IF INVALID CHOICE - KEEP ASKING
         else:
-            print(RED + "\nInvalid choice; please choose a valid option (Y/N)" + RESET)
+            print(
+                RED
+                + "\nInvalid choice; please choose a valid option (Y/N)"
+                + RESET
+                )
 
 
 # BROWSE MOVIES BY GENRE
@@ -563,13 +663,18 @@ def browse_movies_genre():
         try:
             # GET USER GENRE CHOICE
             genre_index = (
-                int(input(YELLOW + "\nSelect a genre from the list: " + RESET)) - 1
+                int(input(
+                    YELLOW
+                    + "\nSelect a genre from the list: "
+                    + RESET)) - 1
             )
             genre_choice = genres[genre_index]
 
-
         except (IndexError, ValueError):
-            print(RED + "\nInvalid choice; please choose a valid option" + RESET)
+            print(
+                RED
+                + "\nInvalid choice; please choose a valid option"
+                + RESET)
             genre_index = None
 
         else:
@@ -581,7 +686,9 @@ def browse_movies_genre():
 
         # PROMPT USER FOR Y/N TO CONTINUE
         user_continue = input(
-            YELLOW + "\nDo you want to choose a different genre? (Y/N) " + RESET
+            YELLOW
+            + "\nDo you want to choose a different genre? (Y/N) "
+            + RESET
         )
 
         # IF YES - ASK AGAIN
@@ -594,7 +701,11 @@ def browse_movies_genre():
 
         # IF INVALID CHOICE - KEEP ASKING
         else:
-            print(RED + "\nInvalid choice; please choose a valid option (Y/N)" + RESET)
+            print(
+                RED
+                + "\nInvalid choice; please choose a valid option (Y/N)"
+                + RESET
+                  )
 
 
 # CREATE GENRE SEARCH RESULTS MOVIE LIST
@@ -629,7 +740,7 @@ def get_genres():
     Returns:
         list: List of unique genres in entire dataset
     """
-    
+
     genres_array = []  # ARRAY TO STORE GENRES
 
     # ITERATE THROUGH ALL MOVIES, ADD GENRES TO ARRAY
@@ -657,14 +768,18 @@ def browse_movies_year():
     query = None
     while query is None:
         try:
-            query = input(YELLOW + "\nEnter a year from 2000 - 2023: " + RESET)
+            query = input(YELLOW
+                          + "\nEnter a year from 2000 - 2023: "
+                          + RESET)
             if 2000 > int(query) or int(query) > 2023:
                 query = None
                 raise ValueError
 
         except ValueError:
             print(
-                RED + "\nInvalid choice; please enter a year from 2000 - 2023" + RESET
+                RED
+                + "\nInvalid choice; please enter a year from 2000 - 2023"
+                + RESET
             )
             query = None
 
@@ -674,14 +789,16 @@ def browse_movies_year():
             movie.index = len(search_results)
         else:
             pass
-        
+
     movies.print_movies(search_results)
 
     # PROMPT USER FOR Y/N TO CONTINUE
     user_continue = None
     while user_continue not in ["y", "n", "Y", "N"]:
         user_continue = input(
-            YELLOW + "\nDo you want to choose a different year? (Y/N) " + RESET
+            YELLOW
+            + "\nDo you want to choose a different year? (Y/N) "
+            + RESET
         )
 
         # IF YES - ASK AGAIN
@@ -694,7 +811,9 @@ def browse_movies_year():
 
         # IF INVALID CHOICE - KEEP ASKING
         else:
-            print(RED + "\nInvalid choice; please choose a valid option (Y/N)" + RESET)
+            print(RED
+                  + "\nInvalid choice; please choose a valid option (Y/N)"
+                  + RESET)
 
 
 get_movies()
