@@ -22,7 +22,23 @@ With CineMate, finding your next movie masterpiece has never been easier.
 
 # Features
 
+- On initialisation, CineMate shows users a home menu which clearly communicates the intent of the application and provides the user with options for navigation.
+- Favourites/Watch List: CineMate allows users add movies to a favourites list for movies they particularly liked. There is also a 'watch list' feature which lets users easily save movies for later viewing. Movies can be easily added or removed from these lists.
+- Browsing: CineMate lets user browse movies by search, genre or release year. 
+    - Search: Users can enter a search query which will compare the movie titles against the query and show any relevant results.
+    - Genre: Users can select a genre they are interested in and CineMate will show all relevant movies within that genre.
+    - Year: Users can select a specific year and CineMate will show relevant movies released in that year.
+- UI: The UI has some basic styling applied which makes information easily readable:
+    - Movies are printed with a blue background while the list headers are printed in green. 
+    - User prompts are coloured yellow so they stand out.
+    - Menu options are green to differentiate them from other information on screen/
+    - Error messages are red to indicate a problem.
+
+
 ## Roadmap
+
+- Improve browsing experience by letting users select multiple genres or enter a range of years to browse by.
+- Paginate movie lists to avoid having long lists print on screen.
 
 ---
 
