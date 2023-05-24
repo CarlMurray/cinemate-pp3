@@ -348,6 +348,9 @@ def add_to_custom_list(
 
             else:
                 raise TypeError
+            
+        except ValueError:
+            print(RED + "\nInvalid choice; please choose a valid option" + RESET)
 
         # ERROR FOR INVALID CHOICE
         except (ValueError, IndexError):
@@ -402,27 +405,34 @@ def remove_from_custom_list(custom_list=None, list_name_string=None):
         in context to terminal ('favourites' or 'watch list')
     """
 
-    selection = (
-        int(
-            input(
-                YELLOW
-                + f"\nType the ID of the movie and press enter to remove from {list_name_string}: "
-                + RESET
+    selection = None
+    while selection is None:
+        try:
+            selection = (
+                int(
+                    input(
+                        YELLOW
+                        + f"\nType the ID of the movie and press enter to remove from {list_name_string}: "
+                        + RESET
+                    )
+                )
+                - 1
             )
-        )
-        - 1
-    )
 
-    # REMOVE SELECTED MOVIE FROM LIST
-    removed = custom_list.pop(selection)
+            # REMOVE SELECTED MOVIE FROM LIST
+            removed = custom_list.pop(selection)
+        except (ValueError, IndexError):
+            print(RED + "\nInvalid choice; please choose a valid option" + RESET)
+            selection = None
 
-    # SHOW FEEDBACK MSG
-    print(GREEN + f"\n{removed.title} removed from {list_name_string}\n" + RESET)
+        else:
+            # SHOW FEEDBACK MSG
+            print(GREEN + f"\n{removed.title} removed from {list_name_string}\n" + RESET)
 
-    # SHOW UPDATED LIST
-    show_custom_list(
-        removed, custom_list=custom_list, list_name_string=list_name_string
-    )
+            # SHOW UPDATED LIST
+            show_custom_list(
+                removed, custom_list=custom_list, list_name_string=list_name_string
+            )
 
 
 # CREATE TOP 100 MOVIES LIST
@@ -506,9 +516,12 @@ def browse_movies_search():
             search_results.append(movie)
         else:
             pass
-    movies.print_movies(search_results)
     if len(search_results) == 0:
         print(RED + "No matches found" + RESET)
+        
+    else:
+        movies.print_movies(search_results)
+
 
     user_continue = None
     while user_continue not in ["y", "n", "Y", "N"]:
@@ -552,13 +565,16 @@ def browse_movies_genre():
             genre_index = (
                 int(input(YELLOW + "\nSelect a genre from the list: " + RESET)) - 1
             )
-            clear_screen()
             genre_choice = genres[genre_index]
-            genre_results = create_genre_results(movies, genre_choice)
+
 
         except (IndexError, ValueError):
             print(RED + "\nInvalid choice; please choose a valid option" + RESET)
             genre_index = None
+
+        else:
+            clear_screen()
+            genre_results = create_genre_results(movies, genre_choice)
 
     user_continue = None
     while user_continue not in ["y", "n", "Y", "N"]:
