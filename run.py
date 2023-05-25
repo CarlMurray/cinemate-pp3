@@ -291,46 +291,67 @@ def show_custom_list(removed=None,
         print(list_headers)
         print(RED + f"{list_name_string} empty" + RESET)
         print(list_headers)
+        print(GREEN + "\nPlease select an option from the menu below:")
+        print("0 - Exit to main menu" + RESET)
+        while True:
+            try:
+                selection = int(
+                    input(YELLOW
+                        + "\nPlease enter a number from the menu: "
+                        + RESET)
+                )
+            except ValueError:
+                print(RED
+                    + "\nInvalid choice; please choose a valid option"
+                    + RESET)
+            else:
+                if selection == 0:
+                    home_menu()
+                else:
+                    print(RED
+                        + "\nInvalid choice; please choose a valid option"
+                        + RESET)
+                    continue
 
         # ELSE PRINT LIST OF MOVIES
     else:
         movies.print_movies(custom_list)
 
-    # PRINTS REMOVED MOVIE IF APPLICABLE
-    if removed:
-        print(RED
-              + f"\n{removed.title} removed from {list_name_string}"
-              + RESET)
-
-    # SHOW OPTIONS MENU
-    print(GREEN + "\nPlease select an option from the menu below:")
-    print(f"1 - Remove from {list_name_string}")
-    print("0 - Exit to main menu" + RESET)
-
-    while True:
-        try:
-            selection = int(
-                input(YELLOW
-                      + "\nPlease enter a number from the menu: "
-                      + RESET)
-            )
-        except ValueError:
+        # PRINTS REMOVED MOVIE IF APPLICABLE
+        if removed:
             print(RED
-                  + "\nInvalid choice; please choose a valid option"
-                  + RESET)
-        else:
-            if selection == 1:
-                remove_from_custom_list(
-                    custom_list=custom_list,
-                    list_name_string=list_name_string
+                + f"\n{removed.title} removed from {list_name_string}"
+                + RESET)
+
+        # SHOW OPTIONS MENU
+        print(GREEN + "\nPlease select an option from the menu below:")
+        print(f"1 - Remove from {list_name_string}")
+        print("0 - Exit to main menu" + RESET)
+
+        while True:
+            try:
+                selection = int(
+                    input(YELLOW
+                        + "\nPlease enter a number from the menu: "
+                        + RESET)
                 )
-            elif selection == 0:
-                home_menu()
-            else:
+            except ValueError:
                 print(RED
-                      + "\nInvalid choice; please choose a valid option"
-                      + RESET)
-                continue
+                    + "\nInvalid choice; please choose a valid option"
+                    + RESET)
+            else:
+                if selection == 1:
+                    remove_from_custom_list(
+                        custom_list=custom_list,
+                        list_name_string=list_name_string
+                    )
+                elif selection == 0:
+                    home_menu()
+                else:
+                    print(RED
+                        + "\nInvalid choice; please choose a valid option"
+                        + RESET)
+                    continue
 
 
 # FOR USER TO ADD A MOVIE TO LIST
@@ -632,7 +653,10 @@ def browse_movies_search():
 
         # IF NO - SHOW OPTIONS
         elif user_continue.lower() == "n":
-            select_user_action(search_results)
+            if len(search_results) > 0:
+                select_user_action(search_results)
+            else:
+                home_menu()
 
         # IF INVALID CHOICE - KEEP ASKING
         else:
