@@ -23,7 +23,7 @@ list_headers = (BG_GREEN
                     f'{"Mins":<6}'
                     f'{"/10":<6}'
                     f'{"Votes":>7}'
-                   )
+                )
                 + RESET)
 
 
@@ -59,7 +59,6 @@ class Movies:
 # MOVIE CLASS
 class Movie:
     def __init__(self, index, title, date, runtime, genres, rating, votes):
-
         """
         Represents a movie.
 
@@ -82,7 +81,6 @@ class Movie:
         self.votes = votes  # NUM VOTES
 
     def __str__(self):
-
         """
         Returns:
             str: The formatted string representation of the movie.
@@ -96,12 +94,11 @@ class Movie:
             f'{self.runtime:<6}'
             f'{self.rating:<6}'
             f'{self.votes:>7}'
-            )
+        )
 
 
 # CLEAR TERMINAL SCREEN
 def clear_screen():
-
     """
     Call to clear screen after user action.
     """
@@ -111,7 +108,6 @@ def clear_screen():
 
 # GETS DATA FROM IMDB DATASET AND STORES IN LIST
 def get_movies():
-
     """
     Reads tsv dataset and creates a Movie object for each instance.
 
@@ -137,7 +133,6 @@ def get_movies():
 
 # SHOWS MOVIE LIST
 def show_movies():
-
     """
     Prints all 1000 movies from get_movies to terminal.
     """
@@ -149,7 +144,6 @@ def show_movies():
 
 # HOME MENU FOR USER SELECTION
 def home_menu():
-
     """
     Prints home menu to terminal.
     """
@@ -166,7 +160,6 @@ def home_menu():
 
 # REGISTER USERS MENU SELECTION
 def get_selection():
-
     """
     Prompt user to choose option from home_menu and take
     appropriate action.
@@ -207,7 +200,6 @@ def get_selection():
 def select_user_action(genre_results=None,
                        top_100=None,
                        search_results=None):
-
     """
     Prompt user to select an option from menu and take appropriate action.
 
@@ -270,7 +262,6 @@ def select_user_action(genre_results=None,
 def show_custom_list(removed=None,
                      custom_list=None,
                      list_name_string=None):
-
     """
     Shows specified custom list to user - either
     favourites or watch list, depending on context
@@ -297,20 +288,20 @@ def show_custom_list(removed=None,
             try:
                 selection = int(
                     input(YELLOW
-                        + "\nPlease enter a number from the menu: "
-                        + RESET)
+                          + "\nPlease enter a number from the menu: "
+                          + RESET)
                 )
             except ValueError:
                 print(RED
-                    + "\nInvalid choice; please choose a valid option"
-                    + RESET)
+                      + "\nInvalid choice; please choose a valid option"
+                      + RESET)
             else:
                 if selection == 0:
                     home_menu()
                 else:
                     print(RED
-                        + "\nInvalid choice; please choose a valid option"
-                        + RESET)
+                          + "\nInvalid choice; please choose a valid option"
+                          + RESET)
                     continue
 
         # ELSE PRINT LIST OF MOVIES
@@ -320,8 +311,8 @@ def show_custom_list(removed=None,
         # PRINTS REMOVED MOVIE IF APPLICABLE
         if removed:
             print(RED
-                + f"\n{removed.title} removed from {list_name_string}"
-                + RESET)
+                  + f"\n{removed.title} removed from {list_name_string}"
+                  + RESET)
 
         # SHOW OPTIONS MENU
         print(GREEN + "\nPlease select an option from the menu below:")
@@ -332,13 +323,13 @@ def show_custom_list(removed=None,
             try:
                 selection = int(
                     input(YELLOW
-                        + "\nPlease enter a number from the menu: "
-                        + RESET)
+                          + "\nPlease enter a number from the menu: "
+                          + RESET)
                 )
             except ValueError:
                 print(RED
-                    + "\nInvalid choice; please choose a valid option"
-                    + RESET)
+                      + "\nInvalid choice; please choose a valid option"
+                      + RESET)
             else:
                 if selection == 1:
                     remove_from_custom_list(
@@ -349,8 +340,8 @@ def show_custom_list(removed=None,
                     home_menu()
                 else:
                     print(RED
-                        + "\nInvalid choice; please choose a valid option"
-                        + RESET)
+                          + "\nInvalid choice; please choose a valid option"
+                          + RESET)
                     continue
 
 
@@ -362,7 +353,6 @@ def add_to_custom_list(
     custom_list=None,
     list_name_string=None,
 ):
-
     """
     Adds user-selected movie to custom list. Ensures that correct
     list of movies is referenced depending on context.
@@ -482,7 +472,6 @@ def add_to_custom_list(
 
 # REMOVE FROM WATCH/FAV LIST
 def remove_from_custom_list(custom_list=None, list_name_string=None):
-
     """
     Removes user-selected movie from custom list.
 
@@ -533,7 +522,6 @@ def remove_from_custom_list(custom_list=None, list_name_string=None):
 
 # CREATE TOP 100 MOVIES LIST
 def create_top_100():
-
     """
     Runs on initialisation.
     Creates list of Top 100 movies based on number of votes.
@@ -561,7 +549,6 @@ def create_top_100():
 
 # SHOWS TOP 100 LIST OF MOVIES
 def show_top_100():
-
     """
     Prints list of Top 100 to terminal.
     """
@@ -573,7 +560,6 @@ def show_top_100():
 
 # BROWSE ALL MOVIES
 def browse_movies():
-
     """
     Shows menu of options to user to choose browsing method
     """
@@ -595,7 +581,7 @@ def browse_movies():
             YELLOW
             + "Please enter a number from the menu: "
             + RESET
-            )
+        )
         if action == "1":
             browse_movies_search()
         elif action == "2":
@@ -609,12 +595,11 @@ def browse_movies():
                 RED
                 + "\nInvalid choice; please choose a valid option"
                 + RESET
-                )
+            )
 
 
 # SEARCH MOVIES BY TITLE
 def browse_movies_search():
-
     """
     Shows list of movies with title containing a user's
     search query
@@ -625,7 +610,7 @@ def browse_movies_search():
         YELLOW
         + "Enter a search query: "
         + RESET
-        )
+    )
     search_results = []
     for movie in movies.all_movies:
         if query.lower() in movie.title.lower():
@@ -664,12 +649,11 @@ def browse_movies_search():
                 RED
                 + "\nInvalid choice; please choose a valid option (Y/N)"
                 + RESET
-                )
+            )
 
 
 # BROWSE MOVIES BY GENRE
 def browse_movies_genre():
-
     """
     Prints a list of genres for user to select from.
     """
@@ -729,12 +713,11 @@ def browse_movies_genre():
                 RED
                 + "\nInvalid choice; please choose a valid option (Y/N)"
                 + RESET
-                  )
+            )
 
 
 # CREATE GENRE SEARCH RESULTS MOVIE LIST
 def create_genre_results(movies, genre_choice):
-
     """
     Creates list of movies containing user-selected genre.
 
@@ -756,7 +739,6 @@ def create_genre_results(movies, genre_choice):
 
 # TO DEFINE LIST OF GENRES
 def get_genres():
-
     """
     Iterates through all movies in IMDB list and creates a list of
     unique genres to print on screen for user to select from.
@@ -781,7 +763,6 @@ def get_genres():
 
 
 def browse_movies_year():
-
     """
     Shows list of movies based on user-selected release year.
 
