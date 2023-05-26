@@ -97,6 +97,22 @@ class Movie:
         )
 
 
+def intro_screen():
+    """
+    Graphic to print on initial load of app only.
+    """
+    print(RED)
+    print(' ██████╗██╗███╗   ██╗███████╗███╗   ███╗ █████╗ ████████╗███████╗')
+    print('██╔════╝██║████╗  ██║██╔════╝████╗ ████║██╔══██╗╚══██╔══╝██╔════╝')
+    print('██║     ██║██╔██╗ ██║█████╗  ██╔████╔██║███████║   ██║   █████╗  ')
+    print('██║     ██║██║╚██╗██║██╔══╝  ██║╚██╔╝██║██╔══██║   ██║   ██╔══╝  ')
+    print('╚██████╗██║██║ ╚████║███████╗██║ ╚═╝ ██║██║  ██║   ██║   ███████╗')
+    print(' ╚═════╝╚═╝╚═╝  ╚═══╝╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝')
+    print('\n')
+    print('Search for your next favourite flick with CineMate!')
+    print(RESET)
+
+
 # CLEAR TERMINAL SCREEN
 def clear_screen():
     """
@@ -143,12 +159,13 @@ def show_movies():
 
 
 # HOME MENU FOR USER SELECTION
-def home_menu():
+def home_menu(initial_load=False):
     """
     Prints home menu to terminal.
     """
-
-    clear_screen()
+    # SHOW INTRO SCREEN IF FIRST LOAD
+    if initial_load is False:
+        clear_screen()
     print(GREEN + "\nPlease select an option from the menu below:")
     print("1 - Show all movies")
     print("2 - Show favourites")
@@ -821,7 +838,8 @@ def browse_movies_year():
                   + RESET)
 
 
+intro_screen()
 get_movies()
 create_top_100()
 movies = Movies(top_100, all_movies)
-home_menu()
+home_menu(initial_load=True)
