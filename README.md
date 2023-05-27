@@ -102,8 +102,12 @@ The below diagram shows the relationship between the `Movie` and `Movies` Classe
     - Note: These files are not included in the GitHub Repository due to their large size
 - [Heroku](https://www.heroku.com/platform) was used for deployment
 - [Jupyter Notebooks](https://jupyter.org/) and [VS Code](https://code.visualstudio.com/) were used for development
-- The [Pandas](https://pandas.pydata.org/) library was used for processing the original datasets.
 - [mermaid.live](https://mermaid.live) was used to generate the UML Class Diagram
+
+## Libraries & Modules
+- The [Pandas](https://pandas.pydata.org/) library was used for processing the original datasets.
+- The built-in [`csv`](https://docs.python.org/3/library/csv.html) module was used for reading the `.tsv` movies data file.
+The built-in [`textwrap`](https://docs.python.org/3/library/textwrap.html) module was used to shorten long movie titles so they would print within the width of the terminal window.
 
 ---
 
@@ -121,13 +125,25 @@ The below diagram shows the relationship between the `Movie` and `Movies` Classe
 | Movie list presentation     | Check: show all; show top 100; show favourites; show watch list; browse by genre/year/search to ensure lists print as intended               | Only relevant movie lists print for the given context. Index numbering is correct.                                                                       |
 | Favourites/watch list       | Add 5 random movies to both favourites and watch list. View favourites/watch list. Remove all movies from lists. y. Add to lists from various contexts (e.g. from search results, top 100 etc.) | Correct movies added to list. Lists print correctly. Feedback messages shown on add/remove. Empty list message shown if empty.                            |
 
+## PEP8 Validation
+- The code for both `run.py` and `data_cleanup.py` were passed through a [PEP8 validator](https://pep8ci.herokuapp.com/) with no issues present.
+
+<details>
+<summary>Validation Screenshot</summary>
+<img src='assets/readme/img/pep8-validation.png'></details>
+
+
 ## Bugs
 
 ### Resolved
 1. When initially testing the 'Add to favourites' feature, I found that when trying to add a favourite from a movie list other than `"Show all movies"` (e.g. adding a favourite from a list of search results), an incorrect movie would be added. This was due to the add-to-favourites function referencing the main list of movies rather than e.g. the search results list. This was fixed by passing an argument to the function to check where the user is coming from i.e. check whether they are trying to add a favourite from a list of search results, top 100 list etc.
 2. During development, I noticed a bug where the first 100 movies in `"Show all movies"` would print with incorrect index numbers, **only** after `"Showing top 100"`. This was due to the `Top 100` movies being assigned a new `index` when printing, and not being reassigned to their original value afterwards. This was fixed by using `enumerate()` in the `Movies.print_movies()` method to reassign the correct `index` when printing.
 
+<details>
+<summary>Index bug screenshot</summary>
+
 ![Screenshot of terminal showing incorrectly numbered movie list](/assets/readme/img/bug-index.png "List index bug")
+</details>
 
 ### Unresolved
 - No unresolved bugs
