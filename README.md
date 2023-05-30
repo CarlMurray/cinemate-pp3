@@ -175,8 +175,12 @@ df_ratings = pd.read_table('YOUR_PATH/title.ratings.tsv', low_memory=False)
 
 ---
 
-# Credits, Resources & Acknowledgements
+# Credits, 
+- Code Institute [repository template](https://github.com/Code-Institute-Org/python-essentials-template) used for deployment
+- IMDB for the datasets utilised ([Available here](https://datasets.imdbws.com/))
+- The [Pandas](https://pandas.pydata.org/) library was used for processing the original datasets.
+
+# Resources & Acknowledgements
 - Harvard CS50’s Introduction to Computer Science ([CS50x](https://cs50.harvard.edu/x/2023/))
 - Harvard CS50’s Introduction to Programming with Python ([CS50P](https://cs50.harvard.edu/python/2022/))
-- Code Institute [repository template](https://github.com/Code-Institute-Org/python-essentials-template) used for deployment
 - The Complete Python Bootcamp From Zero to Hero in Python, Jose Portilla ([Udemy](https://www.udemy.com/course/complete-python-bootcamp/))
