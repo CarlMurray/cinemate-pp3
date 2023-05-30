@@ -125,6 +125,17 @@ The built-in [`textwrap`](https://docs.python.org/3/library/textwrap.html) modul
 | Movie list presentation     | Check: show all; show top 100; show favourites; show watch list; browse by genre/year/search to ensure lists print as intended               | Only relevant movie lists print for the given context. Index numbering is correct.                                                                       |
 | Favourites/watch list       | Add 5 random movies to both favourites and watch list. View favourites/watch list. Remove all movies from lists. y. Add to lists from various contexts (e.g. from search results, top 100 etc.) | Correct movies added to list. Lists print correctly. Feedback messages shown on add/remove. Empty list message shown if empty.                            |
 
+## Error Handling
+
+- Invalid user inputs are handled gracefully and a feedback message is shown to users on invalid input submission.
+- This includes:
+    - Only accepting input within the given range for menu selections
+    - Not allowing users to add the same movie to favourites/watchlist
+    - Removing the 'Remove from favourites/watchlist' option when the list is empty to prevent user error
+    - Showing a feedback message if no movies match user search query
+    - Prompting user to select a valid option within accepted range (e.g. for movie indexes, genre list, browse by year etc.)
+    - Acceptable inputs are not case-sensitive (e.g. for Y/N prompts)
+
 ## PEP8 Validation
 - The code for both `run.py` and `data_cleanup.py` were passed through a [PEP8 validator](https://pep8ci.herokuapp.com/) with no issues present.
 
