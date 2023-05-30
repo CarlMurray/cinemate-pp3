@@ -169,8 +169,8 @@ def home_menu(initial_load=False):
     print(GREEN + "\nPlease select an option from the menu below:")
     print("1 - Show all movies")
     print("2 - Show favourites")
-    print("3 - Show watched")
-    print("4 - Show top 100")
+    print("3 - Show watch list")
+    print("4 - Show top 100 (by most votes)")
     print("5 - Browse movies" + RESET)
     get_selection()
 
@@ -236,7 +236,7 @@ def select_user_action(genre_results=None,
                     GREEN
                     + '\nSelect from the following:\n'
                     '1 - Add a favourite\n'
-                    '2 - Add to watched\n'
+                    '2 - Add to watch list\n'
                     '0 - Exit to menu\n'
                     + RESET
                 )
@@ -690,7 +690,7 @@ def browse_movies_genre():
             genre_index = (
                 int(input(
                     YELLOW
-                    + "\nSelect a genre from the list: "
+                    + "\nEnter ID number of genre from the list: "
                     + RESET)) - 1
             )
             genre_choice = genres[genre_index]
