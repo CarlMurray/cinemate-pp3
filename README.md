@@ -93,6 +93,12 @@ With CineMate, finding your next movie masterpiece has never been easier.
 The below diagram shows the relationship between the `Movie` and `Movies` Classes:
 ![UML class diagram showing Movies and Movie class relationship](/assets/readme/img/uml-class-diagram.png "UML class diagram")
 
+### Flowchart
+
+The following flowchart shows the logic of the code for the program:
+
+![Program flowchart](/assets/readme/img/flowchart.png "Flowchart")
+
 ---
 
 # Technologies Used
@@ -182,16 +188,16 @@ df_ratings = pd.read_table('YOUR_PATH/title.ratings.tsv', low_memory=False)
 5. Run the script - if successful, a new `.tsv` file will be found at your specified `OUTPUT_PATH`
 
 ## Deployment to Heroku
-...
+..
 
 ---
 
-# Credits, 
+# Credits
 - Code Institute [repository template](https://github.com/Code-Institute-Org/python-essentials-template) used for deployment
 - IMDB for the datasets utilised ([Available here](https://datasets.imdbws.com/))
 - The [Pandas](https://pandas.pydata.org/) library was used for processing the original datasets.
 
-# Resources & Acknowledgements
+# Resources
 - Harvard CS50’s Introduction to Computer Science ([CS50x](https://cs50.harvard.edu/x/2023/))
 - Harvard CS50’s Introduction to Programming with Python ([CS50P](https://cs50.harvard.edu/python/2022/))
 - The Complete Python Bootcamp From Zero to Hero in Python, Jose Portilla ([Udemy](https://www.udemy.com/course/complete-python-bootcamp/))
