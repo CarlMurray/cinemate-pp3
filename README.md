@@ -23,11 +23,35 @@ With CineMate, finding your next movie masterpiece has never been easier.
 # Features
 
 - On initialisation, CineMate shows users a home menu which clearly communicates the intent of the application and provides the user with options for navigation.
+    <details>
+    <summary>Screenshot - Homescreen</summary>
+
+    ![Homescreen](/assets/readme/img/homescreen-screenshot.png "Homescreen")
+    </details>
+
 - Favourites/Watch List: CineMate allows users add movies to a favourites list for movies they particularly liked. There is also a 'watch list' feature which lets users easily save movies for later viewing. Movies can be easily added or removed from these lists.
+    <details>
+    <summary>Screenshot - Favourites</summary>
+
+    ![Favourites list](/assets/readme/img/favourites-screenshot.png "Favourites list")
+    </details>
+
 - Browsing: CineMate lets user browse movies by search, genre or release year. 
     - Search: Users can enter a search query which will compare the movie titles against the query and show any relevant results.
     - Genre: Users can select a genre they are interested in and CineMate will show all relevant movies within that genre.
     - Year: Users can select a specific year and CineMate will show relevant movies released in that year.
+    <details>
+    <summary>Screenshot - Browse by Genre</summary>
+
+    ![Browse by genre](/assets/readme/img/genres-screenshot.png "Browse by genre")
+    </details>
+
+    <details>
+    <summary>Screenshot - Browse by Search</summary>
+
+    ![Browse by search](/assets/readme/img/search-screenshot.png "Browse by search")
+    </details>
+
 - UI: The UI has some basic styling applied which makes information easily readable:
     - Movies are printed with a blue background while the list headers are printed in green. 
     - User prompts are coloured yellow so they stand out.
@@ -187,8 +211,61 @@ df_ratings = pd.read_table('YOUR_PATH/title.ratings.tsv', low_memory=False)
 5. If desired, change the filters applied to the data to your liking as noted in the docstrings. The default filters are specified at [Data Processing](#data-processing).
 5. Run the script - if successful, a new `.tsv` file will be found at your specified `OUTPUT_PATH`
 
-## Deployment to Heroku
-..
+
+
+## Deployment Steps
+
+<details>
+<summary>Cloning the Repo</summary>
+
+1. Click on the "Code" button near the top right corner of the page.
+2. Copy the HTTPS or SSH URL that appears in the box.
+Open your terminal (or Git Bash on Windows) and navigate to the directory where you want to clone the repository.
+3. Type "git clone" followed by a space, and then paste the URL you copied in step 3.
+4. Press enter to run the command. This will clone the repository onto your local machine.
+5. You should now have a local copy of the GitHub repository on your machine.
+
+</details>
+
+<details>
+<summary>Forking the Repo</summary>
+
+1. Click the "Fork" button near the top right corner of the page. This will create a copy of the repository in your own GitHub account.
+2. Once the fork is complete, you will be redirected to the forked repository in your account.
+3. If you haven't already, clone the forked repository to your local machine using the steps outlined in the previous answer.
+4. Make any changes or additions you want to the code in your local copy of the repository.
+5. Commit your changes to your local repository using the "git commit" command.
+6. Push your changes to the forked repository on GitHub using the "git push" command.
+7. If you want to contribute your changes back to the original repository, create a pull request by going to the original repository's page and clicking the "New pull request" button. From there, you can compare your changes to the original repository and request that they be merged.
+8. You should now have a forked copy of the GitHub repository in your account, and you can make changes to it and contribute back to the original repository if desired.
+
+</details>
+
+<details>
+<summary>Deployment to Heroku</summary>
+
+Note: A Heroku account is required for deployment to Heroku.
+
+1. From the Dashboard, click "New" - "Create new app".
+
+2. Enter a name for the app. Click "Create App".
+
+![Step 2](/assets/readme/img/heroku-deployment-2.png "Step 2")
+
+3. Connect your GitHub account and select the repository and branch to deploy.
+
+![Step 3](/assets/readme/img/heroku-deployment-3.png "Step 3")
+
+4. When you create the app, you will need to add two buildpacks from the Settings tab. The ordering is as follows:
+    - heroku/python
+    - heroku/nodejs
+
+    ![Step 4](/assets/readme/img/heroku-deployment-4.png "Step 4")
+
+5. You must then create a Config Var called PORT. Set this to 8000.
+
+![Step 5](/assets/readme/img/heroku-deployment-5.png "Step 5")
+</details>
 
 ---
 
