@@ -4,7 +4,33 @@
 ---
 
 # Table of Contents
-TBD
+# Table of Contents
+
+- [Project Background](#project-background)
+- [Features](#features)
+  - [Roadmap](#roadmap)
+- [Code Structure & Logic](#code-structure--logic)
+  - [Data Processing](#data-processing)
+  - [Data Model](#data-model)
+    - [`Movie` Class](#movie-class)
+    - [`Movies` Class](#movies-class)
+    - [UML Class Diagram](#uml-class-diagram)
+    - [Flowchart](#flowchart)
+- [Technologies Used](#technologies-used)
+  - [Libraries & Modules](#libraries--modules)
+- [Testing](#testing)
+  - [Manual Test Process](#manual-test-process)
+  - [Error Handling](#error-handling)
+  - [PEP8 Validation](#pep8-validation)
+  - [Bugs](#bugs)
+    - [Resolved](#resolved)
+    - [Unresolved](#unresolved)
+- [Deployment](#deployment)
+  - [Pre-deployment (Optional)](#pre-deployment-optional)
+  - [Deployment Steps](#deployment-steps)
+- [Credits](#credits)
+- [Resources](#resources)
+
 
 ---
 
@@ -55,7 +81,7 @@ With CineMate, finding your next movie masterpiece has never been easier.
 - UI: The UI has some basic styling applied which makes information easily readable:
     - Movies are printed with a blue background while the list headers are printed in green. 
     - User prompts are coloured yellow so they stand out.
-    - Menu options are green to differentiate them from other information on screen/
+    - Menu options are green to differentiate them from other information on screen.
     - Error messages are red to indicate a problem.
 
 
