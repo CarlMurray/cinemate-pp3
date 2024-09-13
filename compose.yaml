@@ -1,0 +1,8 @@
+services:
+  cinemate-app:
+    build: .
+    networks:
+      - docker-network
+networks:
+  docker-network:
+    external: true
